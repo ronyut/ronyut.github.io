@@ -1,0 +1,7 @@
+# Site Description:
+# The site description is controlled by the 'description' parameter in 'config/_default/params.toml'.
+# The value in 'config/_default/languages.en.toml' is a default value from the theme and is not used.
+
+[markup]
+  [markup.highlight]
+    style = "monokai"

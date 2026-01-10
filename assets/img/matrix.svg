@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice" style="background: black;">
+  <rect width="100%" height="100%" fill="black"></rect>
+  
+  <defs>
+    <linearGradient id="rainGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00FF41" stop-opacity="0"></stop>
+      <stop offset="80%" stop-color="#00FF41" stop-opacity="0.6"></stop>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="1"></stop>
+    </linearGradient>
+    
+    <filter id="matrixBlur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2.5" result="blur"></feGaussianBlur>
+      <feMerge>
+        <feMergeNode in="blur"></feMergeNode>
+        <feMergeNode in="SourceGraphic"></feMergeNode>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700&amp;family=JetBrains+Mono:wght@700&amp;display=swap');
+    text { 
+      font-family: 'JetBrains Mono', 'Noto Sans JP', monospace; 
+      font-weight: 700; 
+      text-anchor: middle;
+      filter: url(#matrixBlur);
+    }
+  </style>
+
+  <g fill="url(#rainGrad)">
+    <!-- Column Example 1: Long Katakana + Digits -->
+    <text x="50" font-size="18">
+      <tspan x="50" dy="0">ア</tspan><tspan x="50" dy="1.2em">1</tspan><tspan x="50" dy="1.2em">イ</tspan><tspan x="50" dy="1.2em">0</tspan>
+      <tspan x="50" dy="1.2em">ウ</tspan><tspan x="50" dy="1.2em">7</tspan><tspan x="50" dy="1.2em">エ</tspan><tspan x="50" dy="1.2em">3</tspan>
+      <tspan x="50" dy="1.2em">オ</tspan><tspan x="50" dy="1.2em">カ</tspan><tspan x="50" dy="1.2em">キ</tspan><tspan x="50" dy="1.2em">ク</tspan>
+      <animateTransform attributeName="transform" type="translate" from="0,-500" to="0,1500" dur="8s" repeatCount="indefinite" begin="0s"></animateTransform>
+    </text>
+
+    <!-- Column 2 -->
+    <text x="100" font-size="16">
+      <tspan x="100" dy="0">8</tspan><tspan x="100" dy="1.2em">5</tspan><tspan x="100" dy="1.2em">2</tspan><tspan x="100" dy="1.2em">9</tspan>
+      <tspan x="100" dy="1.2em">サ</tspan><tspan x="100" dy="1.2em">シ</tspan><tspan x="100" dy="1.2em">ス</tspan><tspan x="100" dy="1.2em">セ</tspan>
+      <tspan x="100" dy="1.2em">ソ</tspan><tspan x="100" dy="1.2em">タ</tspan><tspan x="100" dy="1.2em">チ</tspan><tspan x="100" dy="1.2em">ツ</tspan>
+      <animateTransform attributeName="transform" type="translate" from="0,-500" to="0,1500" dur="10s" repeatCount="indefinite" begin="-2s"></animateTransform>
+    </text>
+
+    <!-- Column 3: Mix -->
+    <text x="150" font-size="20">
+      <tspan x="150" dy="0">M</tspan><tspan x="150" dy="1.2em">A</tspan><tspan x="150" dy="1.2em">T</tspan><tspan x="150" dy="1.2em">R</tspan>
+      <tspan x="150" dy="1.2em">I</tspan><tspan x="150" dy="1.2em">X</tspan><tspan x="150" dy="1.2em">7</tspan><tspan x="150" dy="1.2em">ナ</tspan>
+      <tspan x="150" dy="1.2em">ニ</tspan><tspan x="150" dy="1.2em">ヌ</tspan><tspan x="150" dy="1.2em">ネ</tspan><tspan x="150" dy="1.2em">ノ</tspan>
+      <animateTransform attributeName="transform" type="translate" from="0,-500" to="0,1500" dur="7.5s" repeatCount="indefinite" begin="-4s"></animateTransform>
+    </text>
+
+    <!-- Column 4: Long Sequence -->
+    <text x="200" font-size="14">
+      <tspan x="200" dy="0">0</tspan><tspan x="200" dy="1.2em">1</tspan><tspan x="200" dy="1.2em">0</tspan><tspan x="200" dy="1.2em">1</tspan>
+      <tspan x="200" dy="1.2em">0</tspan><tspan x="200" dy="1.2em">1</tspan><tspan x="200" dy="1.2em">0</tspan><tspan x="200" dy="1.2em">1</tspan>
+      <tspan x="200" dy="1.2em">ハ</tspan><tspan x="200" dy="1.2em">ヒ</tspan><tspan x="200" dy="1.2em">フ</tspan><tspan x="200" dy="1.2em">ヘ</tspan><tspan x="200" dy="1.2em">ホ</tspan>
+      <animateTransform attributeName="transform" type="translate" from="0,-500" to="0,1500" dur="12s" repeatCount="indefinite" begin="-6s"></animateTransform>
+    </text>
+
+    <!-- Repeating logic for high density -->
+    <text x="300" font-size="18">
+      <tspan x="300" dy="0">9</tspan><tspan x="300" dy="1.2em">8</tspan><tspan x="300" dy="1.2em">7</tspan><tspan x="300" dy="1.2em">マ</tspan><tspan x="300" dy="1.2em">ミ</tspan><tspan x="300" dy="1.2em">ム</tspan>
+      <animateTransform attributeName="transform" type="translate" from="0,-400" to="0,1500" dur="9s" repeatCount="indefinite" begin="-1s"></animateTransform>
+    </text>
+    <text x="400" font-size="15">
+      <tspan x="400" dy="0">S</tspan><tspan x="400" dy="1.2em">Y</tspan><tspan x="400" dy="1.2em">S</tspan><tspan x="400" dy="1.2em">T</tspan><tspan x="400" dy="1.2em">E</tspan><tspan x="400" dy="1.2em">M</tspan>
+      <animateTransform attributeName="transform" type="translate" from="0,-400" to="0,1500" dur="11s" repeatCount="indefinite" begin="-3s"></animateTransform>
+    </text>
+    <text x="500" font-size="22">
+      <tspan x="500" dy="0">N</tspan><tspan x="500" dy="1.2em">E</tspan><tspan x="500" dy="1.2em">O</tspan><tspan x="500" dy="1.2em">7</tspan><tspan x="500" dy="1.2em">ヤ</tspan><tspan x="500" dy="1.2em">ユ</tspan>
+      <animateTransform attributeName="transform" type="translate" from="0,-300" to="0,1500" dur="6s" repeatCount="indefinite" begin="-5s"></animateTransform>
+    </text>
+    <text x="600" font-size="17">
+      <tspan x="600" dy="0">C</tspan><tspan x="600" dy="1.2em">O</tspan><tspan x="600" dy="1.2em">D</tspan><tspan x="600" dy="1.2em">E</tspan><tspan x="600" dy="1.2em">ラ</tspan><tspan x="600" dy="1.2em">リ</tspan>
+      <animateTransform attributeName="transform" type="translate" from="0,-500" to="0,1500" dur="8.5s" repeatCount="indefinite" begin="-7s"></animateTransform>
+    </text>
+    <text x="700" font-size="19">
+      <tspan x="700" dy="0">4</tspan><tspan x="700" dy="1.2em">2</tspan><tspan x="700" dy="1.2em">0</tspan><tspan x="700" dy="1.2em">ワ</tspan><tspan x="700" dy="1.2em">ヲ</tspan><tspan x="700" dy="1.2em">ン</tspan>
+      <animateTransform attributeName="transform" type="translate" from="0,-500" to="0,1500" dur="9.8s" repeatCount="indefinite" begin="-2s"></animateTransform>
+    </text>
+    <text x="800" font-size="14">
+      <tspan x="800" dy="0">G</tspan><tspan x="800" dy="1.2em">L</tspan><tspan x="800" dy="1.2em">I</tspan><tspan x="800" dy="1.2em">T</tspan><tspan x="800" dy="1.2em">C</tspan><tspan x="800" dy="1.2em">H</tspan>
+      <animateTransform attributeName="transform" type="translate" from="0,-600" to="0,1500" dur="10.5s" repeatCount="indefinite" begin="-4s"></animateTransform>
+    </text>
+    <text x="900" font-size="20">
+      <tspan x="900" dy="0">1</tspan><tspan x="900" dy="1.2em">3</tspan><tspan x="900" dy="1.2em">5</tspan><tspan x="900" dy="1.2em">7</tspan><tspan x="900" dy="1.2em">Z</tspan><tspan x="900" dy="1.2em">I</tspan>
+      <animateTransform attributeName="transform" type="translate" from="0,-450" to="0,1500" dur="7.2s" repeatCount="indefinite" begin="-1s"></animateTransform>
+    </text>
+  </g>
+  
+  <!-- Subtle full-screen flicker -->
+  <rect width="100%" height="100%" fill="white" opacity="0">
+    <animate attributeName="opacity" values="0;0.03;0;0.01;0" dur="2s" repeatCount="indefinite"></animate>
+  </rect>
+</svg>

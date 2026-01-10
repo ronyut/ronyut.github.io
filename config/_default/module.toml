@@ -1,0 +1,14 @@
+[[imports]]
+  path = "blowfish/"
+
+[[mounts]]
+  source = "assets"
+  target = "assets"
+
+[[mounts]]
+  source = "themes/blowfish/assets"
+  target = "assets"
+
+[[mounts]]
+  source = "themes/blowfish/layouts"
+  target = "layouts"

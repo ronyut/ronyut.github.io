@@ -10,5 +10,9 @@
   target = "assets"
 
 [[mounts]]
+  source = "layouts"
+  target = "layouts"
+
+[[mounts]]
   source = "themes/blowfish/layouts"
   target = "layouts"

@@ -3,4 +3,29 @@
 :root {
   --font-sans: 'JetBrains Mono', monospace;
   --font-mono: 'JetBrains Mono', monospace;
+  --color-primary-500: rgba(255, 0, 0, 1);
+  --color-green-bright: rgb(39, 203, 69);
+  --color-green-dark: rgb(72 224 123 / 31%);
+}
+
+body {
+  background-color: black;
+}
+
+h1 {
+  color: var(--color-green-bright)
+}
+
+#background-blur {
+  --tw-gradient-from: rgba(0, 0, 0, 0.5);
+  --tw-gradient-to: var(--color-green-dark);
+}
+
+#author-image {
+  border: 4px solid #14a92f1f;
+}
+
+#search-query {
+  --tw-ring-color: var(--color-green-bright);
+  border-color: var(--color-green-bright);
 }

@@ -1,0 +1,27 @@
+languageCode = "en-us"
+languageName = "English"
+displayName = "EN"
+weight = 1
+title = "Rony Utevsky"
+contentDir = "content"
+
+[params]
+  displayName = "EN"
+  isoCode = "en"
+  rtl = false
+  dateFormat = "2 January 2006"
+  #logo = "img/profile.jpg"
+  #secondaryLogo = "img/profile.jpg"
+  description = "A powerful, lightweight theme for Hugo."
+
+[params.author]
+  name = "Rony Utevsky"
+  email = "ronyut@gmail.com"
+  image = "img/profile.jpg"
+  imageQuality = 96
+  headline = "Software Developer & Security Researcher"
+  bio = "Specializing in web vulnerabilities and secure code architecture."
+  links = [
+    { email = "mailto:ronyut@gmail.com" },
+    { linkedin = "https://www.linkedin.com/in/rony-utevsky/" },
+  ]

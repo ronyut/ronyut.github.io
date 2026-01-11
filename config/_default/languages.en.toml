@@ -25,3 +25,6 @@ contentDir = "content"
     { email = "mailto:ronyut@gmail.com" },
     { linkedin = "https://www.linkedin.com/in/rony-utevsky/" },
   ]
+
+[permalinks]
+  posts = "/posts/:filename/"

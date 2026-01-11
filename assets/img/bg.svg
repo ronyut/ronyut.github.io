@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#0d0f0f"></rect>
+
+  <!-- Repeating code pattern -->
+  <defs>
+    <pattern id="codePattern" width="80" height="80" patternUnits="userSpaceOnUse">
+      <text x="0" y="14" font-family="JetBrains Mono, Consolas, monospace" font-size="12" fill="#00ff88" opacity="0.08">
+        0100 1a3f
+      </text>
+
+      <text x="4" y="32" font-family="JetBrains Mono, Consolas, monospace" font-size="12" fill="#00ff88" opacity="0.06">
+        dead beef
+      </text>
+
+      <text x="0" y="50" font-family="JetBrains Mono, Consolas, monospace" font-size="12" fill="#00ff88" opacity="0.05">
+        7f45 4c46
+      </text>
+
+      <text x="6" y="68" font-family="JetBrains Mono, Consolas, monospace" font-size="12" fill="#00ff88" opacity="0.07">
+        0x90 0x90
+      </text>
+    </pattern>
+  </defs>
+
+  <!-- Apply pattern -->
+  <rect width="100%" height="100%" fill="url(#codePattern)"></rect>
+</svg>

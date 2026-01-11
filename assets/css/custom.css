@@ -1,23 +1,51 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
 :root {
-  --font-sans: 'JetBrains Mono', monospace;
   --font-mono: 'JetBrains Mono', monospace;
   --color-primary-500: rgba(255, 0, 0, 1);
   --color-green-bright: rgb(39, 203, 69);
-  --color-green-dark: rgb(72 224 123 / 31%);
+  --color-green-dark: rgba(46, 130, 74, 0.31);
+  --article-text-color: #e0e0e0;
+  --color-tag: #ffffffa8;
 }
 
 body {
   background-color: #222222;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.7;
+  color: var(--article-text-color);
 }
 
 h1 {
-  color: var(--color-green-bright);
+  color: #8dff8b;
+  text-shadow: 4px 3px 1px rgb(0 0 0);
 }
 
-h2 {
+h1, h2, h3, .nav-links, code {
+  font-family: var(--font-mono);
+}
+
+a:hover {
   color: var(--color-green-bright);
+  background-color: unset !important;
+}
+
+/* tags and categories badges */
+a[href^="/tags"] span, a[href^="/categories"] span {
+  color: var(--color-tag);
+  border-color: var(--color-tag);
+}
+
+/*
+ *************************************************
+ * Home page
+ *************************************************
+ */
+
+article header h1, article h2 {
+  color: var(--color-green-bright);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
 }
 
 #background-blur {
@@ -26,18 +54,75 @@ h2 {
 }
 
 #author-image {
-  border: 4px solid #14a92f1f;
+  border-bottom: 4px solid #2f833ed9;
+  border-right: 4px solid #2f833ed9;
+  box-shadow: #000000 10px 10px 1px;
 }
 
+/* recent posts */
+main#main-content > section {  
+  border: 3px solid rgba(0, 255, 0, 0.1);
+  padding: 30px;
+  background: #00210340;
+}
+
+/*
+ *************************************************
+ * Main menu (nav bar)
+ *************************************************
+ */
+
+.main-menu {
+  font-family: var(--font-mono);
+  border-bottom: 2px solid white;
+}
+
+/* Global search */
 #search-query {
   --tw-ring-color: var(--color-green-bright);
   border-color: var(--color-green-bright);
 }
 
+#search-button:hover {
+  color: var(--color-green-bright)
+}
+
+/*
+ *************************************************
+ * Article
+ *************************************************
+ */
+
+ /* collapsible section */
 summary {
   cursor: pointer;
 }
 
 summary:hover {
   text-decoration: underline;
+}
+
+.single_hero_background {
+  background: linear-gradient(rgba(0,0,0,0) 80%, #0d1117 100%);
+}
+
+ /* Table of contents */
+#TOCView {
+  background: rgba(0, 0, 0, 0.3); /* Slightly darker than the BG */
+}
+
+#TOCView :where(a.active):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+  text-decoration-color: var(--color-green-bright);
+}
+
+/* hero bg overlay */
+
+#hero + .single_hero_background > div:nth-of-type(1) { 
+  opacity: 1;
+  height: 100dvh;
+}
+
+#hero + .single_hero_background > div:nth-of-type(2) {
+  opacity: 0.9;
+  height: 100dvh;
 }

@@ -4,6 +4,7 @@ slug: "linx-payment-bypass"
 date: 2026-01-10
 description: "Analysis of a critical business logic vulnerability in a popular fintech app allowing for total transaction bypass via human-in-the-loop exploitation."
 tags: ["Web Vulnerabilities", "Logic Flaws", "Phishing", "Fintech"]
+categories: ["Security Research"]
 showDate: true
 thumbnail: "featured.png"
 ---

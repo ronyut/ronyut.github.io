@@ -74,7 +74,6 @@ main#main-content > section {
 
 .main-menu {
   font-family: var(--font-mono);
-  border-bottom: 2px solid white;
 }
 
 /* Global search */

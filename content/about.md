@@ -1,6 +1,7 @@
 ---
-title: "Whoami"
+title: "About"
 layout: "about"
+date: 1970-01-01
 ---
 
 ## $ whoami

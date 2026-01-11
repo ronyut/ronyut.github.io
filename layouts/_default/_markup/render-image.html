@@ -1,0 +1,141 @@
+{{- /* 1. INITIAL PARSING: Split destination into path and query immediately to avoid Windows file errors */ -}}
+{{- $urlStr := .Destination -}}
+{{- $parts := split $urlStr "?" -}}
+{{- $cleanPath := index $parts 0 -}}
+{{- $query := index $parts 1 | default "" -}}
+
+{{- $altText := .Text -}}
+{{- $caption := .Title -}}
+{{- $disableImageOptimizationMD := .Page.Site.Params.disableImageOptimizationMD | default false -}}
+
+{{- /* 2. FETCH RESOURCE: Use the CLEAN path only */ -}}
+{{- $url := urls.Parse ($cleanPath | safeURL) -}}
+{{- $isRemote := findRE "^(https?|data)" $url.Scheme -}}
+{{- $resource := "" -}}
+
+{{- if not $isRemote -}}
+  {{- /* Find the image without the query string */ -}}
+  {{- $resource = or ($.Page.Resources.GetMatch $cleanPath) (resources.Get $cleanPath) -}}
+{{- end -}}
+
+{{- /* ---------------------------------------------------------------- recial */ -}}
+
+{{- define "RenderImageSimple" -}}
+  {{- $imgObj := .imgObj -}}
+  {{- $src := .src -}}
+  {{- $alt := .alt -}}
+  {{- $query := .query | default "" -}}
+  {{- $options := "" -}}
+
+  {{- /* Parse width from query string */ -}}
+  {{- if $query -}}
+    {{- $params := split $query "&" -}}
+    {{- range $params -}}
+      {{- if (hasPrefix . "w=") -}}
+        {{- $w := strings.TrimPrefix "w=" . -}}
+        {{- $options = printf "%sx" $w -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- /* Apply Resize if valid */ -}}
+  {{- if and $imgObj $options -}}
+    {{- $imgObj = $imgObj.Resize $options -}}
+  {{- end -}}
+
+  <img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low"
+    alt="{{ $alt }}"
+    {{ with $imgObj -}}
+      src="{{ .RelPermalink }}"
+      width="{{ .Width }}"
+      height="{{ .Height }}"
+    {{- else -}}
+      src="{{ $src | safeURL }}"
+    {{- end }}>
+{{- end -}}
+
+{{- define "RenderImageResponsive" -}}
+  {{- $imgObj := .imgObj -}}
+  {{- $alt := .alt -}}
+  {{- $query := .query | default "" -}}
+  {{- $options := "" -}}
+
+  {{- /* Check if user forced a specific width like ?w=300 */ -}}
+  {{- if $query -}}
+    {{- $params := split $query "&" -}}
+    {{- range $params -}}
+      {{- if (hasPrefix . "w=") -}}
+        {{- $w := strings.TrimPrefix "w=" . -}}
+        {{- $options = printf "%sx" $w -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- if $options -}}
+    {{- /* If user asked for a specific size, bypass responsive and just do that size */ -}}
+    {{- template "RenderImageSimple" (dict "imgObj" $imgObj "alt" $alt "query" $query) -}}
+  {{- else -}}
+    {{- $originalWidth := $imgObj.Width -}}
+    {{- $img800 := $imgObj -}}
+    {{- $img1280 := $imgObj -}}
+    {{- if gt $originalWidth 800 -}}
+      {{- $img800 = $imgObj.Resize "800x" -}}
+    {{- end -}}
+    {{- if gt $originalWidth 1280 -}}
+      {{- $img1280 = $imgObj.Resize "1280x" -}}
+    {{- end -}}
+    {{- $srcset := printf "%s 800w, %s 1280w" $img800.RelPermalink $img1280.RelPermalink -}}
+    <img
+      class="my-0 rounded-md"
+      loading="lazy"
+      decoding="async"
+      fetchpriority="auto"
+      alt="{{ $alt }}"
+      width="{{ $imgObj.Width }}"
+      height="{{ $imgObj.Height }}"
+      src="{{ $img800.RelPermalink }}"
+      srcset="{{ $srcset }}"
+      sizes="(min-width: 768px) 50vw, 65vw"
+      data-zoom-src="{{ $imgObj.RelPermalink }}">
+  {{- end -}}
+{{- end -}}
+
+{{- define "RenderImageCaption" -}}
+  {{- with .caption -}}
+    <figcaption>{{ . | markdownify }}</figcaption>
+  {{- end -}}
+{{- end -}}
+
+{{- /* ---------------------------------------------------------------- Main Loop */ -}}
+
+<figure
+  {{ range $k, $v := .Attributes -}}
+    {{- if $v -}}{{ printf " %s=%q" $k ($v | transform.HTMLEscape) | safeHTMLAttr }}{{- end -}}
+  {{- end -}}>
+  
+  {{- if $isRemote -}}
+    {{- template "RenderImageSimple" (dict "imgObj" "" "src" $urlStr "alt" $altText) -}}
+  {{- else if $resource -}}
+    {{- $isSVG := eq $resource.MediaType.SubType "svg" -}}
+    {{- $shouldOptimize := and (not $disableImageOptimizationMD) (not $isSVG) -}}
+    
+    {{- if $shouldOptimize -}}
+      {{- /* Pass the query string here so responsive logic knows if a width was requested */ -}}
+      {{- template "RenderImageResponsive" (dict "imgObj" $resource "alt" $altText "query" $query) -}}
+    {{- else -}}
+      {{- if $isSVG -}}
+        {{- template "RenderImageSimple" (dict "imgObj" "" "src" $resource.RelPermalink "alt" $altText) -}}
+      {{- else -}}
+        {{- template "RenderImageSimple" (dict "imgObj" $resource "src" $resource.RelPermalink "alt" $altText "query" $query) -}}
+      {{- end -}}
+    {{- end -}}
+  {{- else -}}
+    {{- template "RenderImageSimple" (dict "imgObj" "" "src" $urlStr "alt" $altText) -}}
+  {{- end -}}
+
+  {{- template "RenderImageCaption" (dict "caption" $caption) -}}
+</figure>

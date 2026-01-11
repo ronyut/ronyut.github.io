@@ -1,0 +1,3 @@
+{{- if not .Site.IsServer -}}
+  {{- errorf "BUILD FAILED: Outstanding TODO found in %q. Complete all tasks before publishing." .Page.File.Path -}}
+{{- end -}}

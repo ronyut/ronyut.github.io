@@ -123,6 +123,6 @@ summary:hover {
 }
 
 #hero + .single_hero_background > div:nth-of-type(2) {
-  opacity: 0.9;
+  opacity: 0.7;
   height: 100dvh;
 }

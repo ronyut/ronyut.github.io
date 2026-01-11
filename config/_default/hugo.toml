@@ -5,6 +5,7 @@
 theme = "blowfish"
 baseURL = "https://ronyut.github.io/"
 defaultContentLanguage = "en"
+timeout = "5m"
 
 pluralizeListTitles = "false" # hugo function useful for non-english languages, find out more in  https://gohugo.io/getting-started/configuration/#pluralizelisttitles
 

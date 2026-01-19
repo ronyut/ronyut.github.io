@@ -60,7 +60,7 @@ article header h1, article h2 {
 }
 
 /* recent posts */
-main#main-content > section {  
+main#main-content > section.w-full {  
   border: 3px solid rgba(0, 255, 0, 0.1);
   padding: 30px;
   background: #00210340;

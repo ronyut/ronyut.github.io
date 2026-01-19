@@ -73,7 +73,7 @@ createMarkup = (str) => {
 This behavior is not accidental misuse but an architectural flaw caused by combining layout measurement, HTML string manipulation, and an explicit HTML injection sink without sanitization.
 
 A full technical breakdown of the vulnerability, including DOM lifecycle analysis and the remediation patch, is documented separately:
-👉 [Exploiting Layout Logic for DOM XSS in react-show-more-text]({{< relref "cve-xss-react-show-more-text" >}})
+👉 [Exploiting Layout Logic for DOM XSS in react-show-more-text]({{< relref "dom-xss-react-show-more-text" >}})
 
 ## Weaponization: From Stored XSS to Worm
 
@@ -188,7 +188,7 @@ Individually, none of these issues would necessarily result in critical impact. 
 
 ## Ethical Disclosure & Remediation
 
-All findings were disclosed responsibly to the organization’s cybersecurity leadership. I provided a complete proof-of-concept, source code, and detailed remediation guidance, including recommendations to enforce backend HTML sanitization and audit third-party UI components for undocumented HTML parsing behavior.
+All findings were disclosed responsibly to the organization’s cybersecurity leadership. I provided a complete proof-of-concept, source code, and detailed remediation guidance, including recommendations to enforce backend HTML sanitization, audit third-party UI components for undocumented HTML parsing behavior, and deploy a restrictive Content Security Policy (CSP) to reduce the impact of client-side injection flaws.
 
 **Vulnerability Status & Coordination:** I identified the root cause within a third-party dependency and developed a functional patch. I initiated a coordinated disclosure process with the maintainer; however, as the upstream project has become unresponsive, I have maintained a [hard fork](https://github.com/ronyut/react-show-more-text) with the security fix to ensure the safety of my own implementations.
 

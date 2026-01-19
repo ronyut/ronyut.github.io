@@ -2,7 +2,7 @@ languageCode = "en-us"
 languageName = "English"
 displayName = "EN"
 weight = 1
-title = "Rony Utevsky | Security Research & Software Engineering"
+title = "Rony Utevsky | Security Research & Software Developent"
 contentDir = "content"
 
 [params]
@@ -12,14 +12,14 @@ contentDir = "content"
   dateFormat = "2 January 2006"
   #logo = "img/profile.jpg"
   #secondaryLogo = "img/profile.jpg"
-  description = "A powerful, lightweight theme for Hugo."
+  description = "Breaking and building systems. Security research on web ecosystems and high-fidelity exploit development."
 
 [params.author]
   name = "Rony Utevsky"
   email = "ronyut@gmail.com"
   image = "img/profile.jpg"
   imageQuality = 96
-  headline = "Software Developer & Security Researcher"
+  headline = "Security Researcher & Software Developer"
   bio = "Specializing in web vulnerabilities and secure code architecture."
   links = [
     { email = "mailto:ronyut@gmail.com" },
@@ -27,4 +27,5 @@ contentDir = "content"
   ]
 
 [permalinks]
-  posts = "/posts/:filename/"
+  portfolio = "/portfolio/:slug/"
+  posts = "/posts/:slug/"

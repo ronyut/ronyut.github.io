@@ -1,0 +1,21 @@
+{{- if site.Params.csp -}}
+  {{- $policy := slice -}}
+  {{- range $directive, $sources := site.Params.csp -}}
+    {{- if $sources -}}
+      {{/* Join the array of sources with a space */}}
+      {{- $value := delimit $sources " " -}}
+      {{/* Add the "directive value" to our policy slice */}}
+      {{- $policy = $policy | append (printf "%s %s" $directive $value) -}}
+    {{- end -}}
+  {{- end -}}
+  {{/* Join all directives with "; " and add the final ";" at the end */}}
+  {{- $cspString := printf "%s;" (delimit $policy "; ") -}}
+  <meta http-equiv="Content-Security-Policy" content="{{ $cspString | safeHTMLAttr }}">
+{{- end -}}
+
+<script>
+  // Prevent clickjacking
+  if (top !== self) {
+    top.location.replace(self.location.href);
+  }
+</script>

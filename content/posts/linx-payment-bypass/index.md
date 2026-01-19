@@ -1,5 +1,6 @@
 ---
 title: "The Trust Fall: Bypassing a City-Wide Payment Ecosystem"
+slug: "linx-payment-bypass"
 date: 2026-01-10
 description: "What happens when a fintech platform trusts \"pixels on a screen\"? I audited the Linx payment flow and uncovered a critical logic flaw that allows for total transaction bypass."
 tags: ["Web Vulnerabilities", "Logic Flaws", "Phishing", "Fintech"]
@@ -175,14 +176,13 @@ To demonstrate the exploit's mechanics while preventing unauthorized misuse, I h
 
 * **January 3, 2026:** Discovery of the business logic flaw.
 * **January 8, 2026:** Vulnerability verified in a live environment. Linx team notified.
+* **January 12, 2026:** Full technical report submitted to the Linx security/engineering team. Acknowledgement from the team; vulnerability confirmed.
 <!--
-* **Date + x Days:** Full technical report submitted to the Linx security/engineering team.
-* **Date + x Days:** Acknowledgement from the team; vulnerability confirmed.
 * **Date + x Days:** **Patch Deployed.** Patch deployment and verification.
 * **Today:** Public disclosure of findings.
 -->
 
-Note: All research was conducted ethically. No businesses were harmed; any funds used during live testing were returned to Linx.
+*Note: All research was conducted ethically. No businesses were harmed; any funds used during live testing were returned to Linx.*
 
 ---
 

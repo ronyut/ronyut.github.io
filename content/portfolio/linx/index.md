@@ -16,4 +16,4 @@ While auditing the payment flow of **Linx**, a dominant hospitality loyalty plat
 
 **Impact:** **Critical.** An attacker could settle bills at 100+ venues without any actual transfer of funds or credit points, leading to direct financial loss for the merchant and the platform.
 
-[Read the Full Technical Write-up in the Posts →](/posts/linx-payment-bypass/)
+[Read the Full Technical Write-up in the Posts →]({{< relref "/posts/linx-payment-bypass">}})

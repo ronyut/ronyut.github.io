@@ -3,6 +3,7 @@
 title: "Exploiting Layout Logic for DOM-Based XSS in react-show-more-text"
 slug: "dom-xss-react-show-more-text"
 date: 2026-01-17
+lastmod: 2026-01-20
 description: "A technical deep dive into a zero-day DOM-based XSS vulnerability caused by layout-driven rendering logic in a popular React UI component."
 tags: ["Zero-Day", "React", "XSS", "Supply Chain"]
 categories: ["Security Research"]
@@ -17,7 +18,7 @@ The vulnerability is rooted in an unsafe interaction between layout-measurement 
 
 This research documents a previously unknown vulnerability class in UI helper components: **layout-dependent execution paths that silently opt out of framework-level security guarantees**.
 
-I am currently in the process of requesting a CVE assignment through MITRE. At the time of publication, no CVE identifier has been issued, and the issue remains untracked in public vulnerability databases.
+I am currently coordinating the release of version 1.7.2, which implements a security patch to resolve this issue.
 
 {{< alert icon="shield" cardColor="#700d0d91" iconColor="#f1faee" >}}
 **Vulnerability Risk Assessment: CRITICAL**
@@ -98,13 +99,12 @@ To determine truncation boundaries, the component measures rendered text width u
 innerText = (node) => {
     const div = document.createElement("div");
     const content = node.innerHTML.replace(/\r\n|\r|\n/g, " ");
-
     div.innerHTML = this.extractReplaceLinksKeys(content);
     return div.textContent;
 };
 ```
 
-React escapes string children at render time. A payload such as:
+React escapes string children at render time, and a payload such as:
 
 ```html
 '<img src=x onerror=alert(1)>'
@@ -192,9 +192,9 @@ Because execution can occur without user interaction, impact severity is high.
 
 ## Remediation: Defense in Depth
 
-I authored and submitted a security patch applying a defense-in-depth strategy.
+I authored a [security patch](https://github.com/devzonetech/react-show-more-text/security/advisories/GHSA-4g6v-mrr8-m62p) (v1.7.2) applying a defense-in-depth strategy by sanitizing all restored content immediately before the final render.
 
-### Patch Overview
+### Patch Highlights:
 
 * **Sanitization:** All restored content is sanitized immediately before rendering
 * **Hardened Defaults:** Only `<a>` tags and explicitly allowed attributes are permitted
@@ -222,10 +222,8 @@ restoreReplacedLinks = (content) => {
 * **December 25, 2025:** Vulnerability discovered during application testing
 * **December 28, 2025:** Proof-of-concept developed and validated
 * **January 15, 2026:** Disclosure initiated with maintainers
-<!--
-* **January 2026:** Patch submitted and verified (Node 16 / npm 8)
--->
-
+* **January 20, 2026:** Security advisory created; patch (v1.7.2) submitted to the private repository for review.
+* **Pending:** Public disclosure and CVE assignment.
 ---
 
 ## Conclusion

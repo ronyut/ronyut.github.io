@@ -2,8 +2,7 @@
 
 title: "Exploiting Layout Logic for DOM-Based XSS in react-show-more-text"
 slug: "dom-xss-react-show-more-text"
-date: 2026-01-17
-lastmod: 2026-01-20
+date: 2026-01-20
 description: "A technical deep dive into a zero-day DOM-based XSS vulnerability caused by layout-driven rendering logic in a popular React UI component."
 tags: ["Zero-Day", "React", "XSS", "Supply Chain"]
 categories: ["Security Research"]
@@ -12,20 +11,21 @@ featured_image: "featured.png"
 
 ## Executive Summary
 
-I identified a critical DOM-based Cross-Site Scripting (XSS) vulnerability in `react-show-more-text` (v1.7.1 and below), a widely used React component for truncating and expanding text with more than 27,000 weekly downloads at the time of discovery.
+I identified a critical DOM-based Cross-Site Scripting (XSS) vulnerability in `react-show-more-text` (v1.7.1 and below). At the time of discovery, this widely used React component for text truncation averaged over 30,000 weekly downloads, representing a significant supply-chain risk to the React ecosystem.
 
-The vulnerability is rooted in an unsafe interaction between layout-measurement logic and HTML restoration. Under specific and realistic layout conditions, attacker-controlled input can bypass React’s escaping model and execute arbitrary JavaScript in the browser.
+The vulnerability is rooted in an unsafe interaction between layout-measurement logic and HTML restoration. Under specific and realistic layout conditions, attacker-controlled input can bypass React’s escaping model and execute arbitrary JavaScript automatically upon rendering, without additional user interaction (**Zero-Click**), effectively bypassing the need for specific user engagement with the component.
 
-This research documents a previously unknown vulnerability class in UI helper components: **layout-dependent execution paths that silently opt out of framework-level security guarantees**.
+This research documents a **previously unknown vulnerability** class in UI helper components: layout-dependent execution paths that silently opt out of framework-level security guarantees.
 
-I am currently coordinating the release of version 1.7.2, which implements a security patch to resolve this issue.
+I have prepared version 1.7.2 to address this issue that includes a security patch.
 
-{{< alert icon="shield" cardColor="#700d0d91" iconColor="#f1faee" >}}
-**Vulnerability Risk Assessment: CRITICAL**
+{{< alert icon="shield" cardColor="#e94d1091" iconColor="#f1faee" >}}
+**Vulnerability Risk Assessment: HIGH**
 
+* **Estimated Severity**: 8.1 (CVSS 3.1) / 9.3 (CVSS 4.0)
 * **Affected Component:** `react-show-more-text` (`Truncate.js`)
 * **Vulnerability Type:** DOM-based XSS
-* **Impact:** Arbitrary JavaScript execution (zero-click under specific layouts)
+* **Impact:** Arbitrary JavaScript execution (Zero-Click under specific layouts)
 * **Attack Surface:** Any application rendering attacker-controlled strings
 {{< /alert >}}
 
@@ -222,8 +222,7 @@ restoreReplacedLinks = (content) => {
 * **December 25, 2025:** Vulnerability discovered during application testing
 * **December 28, 2025:** Proof-of-concept developed and validated
 * **January 15, 2026:** Disclosure initiated with maintainers
-* **January 20, 2026:** Security advisory created; patch (v1.7.2) submitted to the private repository for review.
-* **Pending:** Public disclosure and CVE assignment.
+* **January 20, 2026:** GitHub Security Advisory created; patched version (v1.7.2) prepared pending public release and CVE assignment.
 ---
 
 ## Conclusion

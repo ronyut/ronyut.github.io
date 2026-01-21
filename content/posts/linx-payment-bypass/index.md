@@ -1,7 +1,7 @@
 ---
 title: "The Trust Fall: Bypassing a City-Wide Payment Ecosystem"
 slug: "linx-payment-bypass"
-date: 2026-01-10
+date: 2026-01-12
 description: "What happens when a fintech platform trusts \"pixels on a screen\"? I audited the Linx payment flow and uncovered a critical logic flaw that allows for total transaction bypass."
 tags: ["Web Vulnerabilities", "Logic Flaws", "Phishing", "Fintech"]
 categories: ["Security Research"]
@@ -13,12 +13,12 @@ In Tel Aviv, **Linx** has become a dominant payment and loyalty platform, integr
 
 I accepted a challenge to audit the system's integrity. My research uncovered a **Critical Business Logic Vulnerability** that allows an attacker to bypass the entire payment flow, effectively "settling" bills without any actual transfer of funds or credit points.
 
-{{< alert icon="shield" cardColor="#700d0d91" iconColor="#f1faee" >}}
-**Vulnerability Risk Assessment: CRITICAL**
+{{< alert icon="shield" cardColor="#e94d1091" iconColor="#f1faee" >}}
+**Vulnerability Risk Assessment: HIGH**
 * **Vector:** Business Logic / Social Engineering Hybrid
-* **Impact:** **High** (Direct financial loss to merchants and platform)
-* **Exploitability:** **High** (Unauthenticated; requires no specialized hardware)
-* **Complexity:** **Low/Medium** (Requires infrastructure replication and domain squatting)
+* **Impact:** High (Direct financial loss to merchants and platform)
+* **Exploitability:** High (Unauthenticated; requires no specialized hardware)
+* **Complexity:** Medium (Requires high-fidelity UI replication and control of a look-alike domain)
 * **Remediation Status:** **Not Patched**
 {{< /alert >}}
 
@@ -158,10 +158,11 @@ This research serves as a case study in how security is only as robust as its we
 
 ## 🧪 Live Proof of Concept (PoC)
 
-<!--Since Linx has officially patched this vulnerability, I have made the production-ready environemt publicly available.-->
-While this vulnerability remains unpatched in the production ecosystem, I have made a modified environment available for research purposes.
+To demonstrate the mechanics of the attack without enabling real-world abuse, I deployed a non-production simulation that intentionally prevents successful settlement.
 
-To demonstrate the exploit's mechanics while preventing unauthorized misuse, I have implemented a mandatory Red Safety Warning that triggers before the transaction state is rendered. Because this PoC explicitly identifies itself as a security simulation to the human verifier, the risk of real-world financial loss is neutralized.
+The proof-of-concept includes a mandatory, non-bypassable security warning displayed before any transaction state is rendered. This warning explicitly identifies the interface as a security simulation and prevents the completion of any real payment flow.
+
+As a result, the PoC demonstrates the exploit’s mechanics while materially reducing the risk of real-world financial loss or unauthorized misuse.
 
 > **[🔗 Launch Live Demo](https://biz.linx.ovh/init_transaction/)**
 
@@ -177,10 +178,6 @@ To demonstrate the exploit's mechanics while preventing unauthorized misuse, I h
 * **January 3, 2026:** Discovery of the business logic flaw.
 * **January 8, 2026:** Vulnerability verified in a live environment. Linx team notified.
 * **January 12, 2026:** Full technical report submitted to the Linx security/engineering team. Acknowledgement from the team; vulnerability confirmed.
-<!--
-* **Date + x Days:** **Patch Deployed.** Patch deployment and verification.
-* **Today:** Public disclosure of findings.
--->
 
 *Note: All research was conducted ethically. No businesses were harmed; any funds used during live testing were returned to Linx.*
 

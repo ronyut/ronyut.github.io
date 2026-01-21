@@ -71,7 +71,7 @@ googleAnalytics = "G-MY0D1S8BTD"
 
 [params.csp]
   "default-src" = ["'self'"]
-  "connect-src" = ["'self'", "'https://www.google-analytics.com'"]
+  "connect-src" = ["'self'", "https://www.google-analytics.com"]
   "script-src"  = ["'self'", "'sha256-2pa3NIoxYutjJt4200eTmqmSOmWWhLG7jZ5D9H9KnSk='", "'sha256-xhi6ptLg8dTM2XBtV/SYNxtnsQEnSv5wPm9wxHSlpUI='", "'sha256-MTMVBOnL3rJJ90zyllEXyHqGJoWcVyAEwjFtVg7PZJQ='"]
   "style-src"   = ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"]
   "font-src"    = ["https://fonts.gstatic.com"]

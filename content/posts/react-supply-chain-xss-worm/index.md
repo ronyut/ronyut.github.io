@@ -1,5 +1,5 @@
 ---
-title: "How a Zero-Day in a React Library Exposed Corporate Data, Employee Credentials, and Financial Assets"
+title: "How an Unpatched Zero-Day in a React Library Exposed Corporate Data, Employee Credentials, and Financial Assets"
 slug: "react-supply-chain-xss-worm"
 date: 2025-12-28
 description: "A React supply-chain zero-day that transformed an innocuous OOO field into a wormable corporate attack primitive."
@@ -10,7 +10,7 @@ featured_image: "featured.png"
 
 ## Executive Summary
 
-While working at a large global security organization, I identified a critical security vulnerability in an internal React-based application known as the *Employee Directory*. The investigation began with a routine test of an “Out of Office” (OOO) message field and evolved into the discovery of a **zero-day vulnerability in a widely used open-source React library**, ultimately resulting in a **wormable stored XSS condition**.
+While working at a large global security organization, I identified a critical security vulnerability in an internal React-based application known as the *Employee Directory*. The investigation began with a routine test of an “Out of Office” (OOO) message field and evolved into the discovery of an **unpatched zero-day vulnerability in a widely used open-source React library**, ultimately resulting in a **wormable stored XSS condition**.
 
 By chaining backend trust in frontend validation with a supply-chain flaw in a UI dependency, I demonstrated how an attacker could execute arbitrary JavaScript across a trusted corporate domain. This capability enabled **credential harvesting**, **lateral movement across internal systems**, and **direct interaction with sensitive financial workflows**, including expense management, travel approvals, and ESPP data.
 
@@ -18,13 +18,15 @@ The exploit required no user interaction beyond viewing an infected profile and 
 
 *All findings were validated under controlled conditions and disclosed responsibly; no production data was harmed.*
 
-{{< alert icon="shield" cardColor="#700d0d91" iconColor="#f1faee" >}}
+{{< alert icon="shield" cardColor="#e2131391" iconColor="#f1faee" >}}
 **Vulnerability Risk Assessment: CRITICAL**
 
-- **Vector:** Stored XSS via third-party dependency  
-- **Impact:** Credential theft, lateral movement, financial manipulation  
-- **Exploitability:** High (wormable, zero-click under common layouts)  
-- **Root Cause:** Backend trust in frontend input combined with unsafe UI abstraction  
+* **Estimated Severity:** 9.3 (CVSS 4.0) / 8.1 (CVSS 3.1)
+* **Vulnerability Type:** Stored XSS / Supply Chain Worm  
+* **Execution:** Passive (Zero-Click) trigger on page render
+* **Impact:** Automated session hijacking, horizontal self-propagation across employee profiles, credential theft, lateral movement, financial manipulation  
+* **Exploitability:** High (wormable)  
+* **Root Cause:** Backend trust in frontend input combined with unsafe UI abstraction  
 {{< /alert >}}
 
 ---
@@ -41,15 +43,13 @@ Replaying the request directly against the backend API using Postman demonstrate
 
 Upon refreshing the profile, the injected HTML rendered correctly, confirming that untrusted input was stored verbatim in the backend and later rendered in the browser. This behavior established a classic stored-XSS precondition.
 
-
-
 At this point, the remaining question was why the payload executed inside a React application that should escape string content by default.
 
 ---
 
-## Root Cause: A Supply-Chain Zero-Day in `react-show-more-text`
+## Root Cause: An Latent Supply-Chain Zero-Day in react-show-more-text
 
-It turned out that the execution sink was not introduced by the organization’s application code.. Instead, it originated from a third-party dependency: `react-show-more-text`, a popular React component used to truncate and expand text while preserving clickable links.
+It turned out that the execution sink was not introduced by the organization’s application code. Instead, it originated from a third-party dependency: `react-show-more-text`, a popular React component used to truncate and expand text while preserving clickable links.
 
 To support link preservation, the library performs a series of non-trivial operations on raw HTML strings. In doing so, it bypasses React’s default escaping guarantees and ultimately renders content using `dangerouslySetInnerHTML`.
 
@@ -74,6 +74,8 @@ This behavior is not accidental misuse but an architectural flaw caused by combi
 
 A full technical breakdown of the vulnerability, including DOM lifecycle analysis and the remediation patch, is documented separately:
 👉 [Exploiting Layout Logic for DOM XSS in react-show-more-text]({{< relref "dom-xss-react-show-more-text" >}})
+
+---
 
 ## Weaponization: From Stored XSS to Worm
 
@@ -120,7 +122,9 @@ async function infect(csrf) {
 
 Because the *Employee Directory* application is one of the most frequently accessed internal applications, this mechanism enabled rapid and reliable propagation without requiring any user interaction.
 
-*Note: To prevent unintended spread, the worm’s propagation logic was explicitly gated behind a runtime safety flag and did not execute unless manually enabled during controlled testing.*
+>*Note: To prevent unintended spread, the worm’s propagation logic was explicitly gated behind a runtime safety flag and did not execute unless manually enabled during controlled testing.*
+
+---
 
 ## Credential Harvesting via Contextual Trust Abuse
 I then implemented a credential harvesting interface that precisely mimicked the native Chrome / Active Directory re-authentication prompt, including animations, visual depth, and interaction behavior. With code execution occurring on a trusted corporate origin, traditional phishing indicators were effectively neutralized.
@@ -148,8 +152,8 @@ Because the exploit executed within an authenticated session on `internal.corpor
 This enabled direct interaction with internal APIs related to expense approvals, travel approvals, and ESPP data. In addition, if a payroll team member got infected, it would give the attacker access to the admin panel of the ESPP application, where they could initiate ESPP-related actions on behalf of other employees.
 
 {{< gallery >}}
-    <img src="media/espp.png" class="grid-w50" alt="Authenticated internal ESPP managment sytem accessible from a compromised corporate browser session." />
-    <img src="media/expense.png" class="grid-w50" alt="Authenticated internal Expenses managment sytem accessible from a compromised corporate browser session." />
+    <img src="media/espp.png" class="grid-w50" alt="Authenticated internal ESPP management sytem accessible from a compromised corporate browser session." />
+    <img src="media/expense.png" class="grid-w50" alt="Authenticated internal Expenses management sytem accessible from a compromised corporate browser session." />
     <figcaption>
         <em>
         Figure 3: Internal financial systems reachable through an authenticated session after successful exploitation
@@ -157,9 +161,11 @@ This enabled direct interaction with internal APIs related to expense approvals,
     </figcaption>
 {{< /gallery >}}
 
-While direct cross-origin exfiltration was partially restricted, I observed that `OPTIONS` preflight requests were insufficiently filtered. This allowed payloads to be exfiltrated via query parameters during forced preflight requests, demonstrating a viable data leakage channel even under restrictive CORS conditions.
+### CORS Preflight as an Exfiltration Channel
 
-*Note: The mechanism was validated exclusively using non-sensitive, synthetic test payloads to confirm feasibility, not to extract production data.*
+During the development of the exfiltration channel, I observed that while traditional `POST` requests were heavily scrutinized by the corporate Web Application Firewall (WAF), CORS Preflight (`OPTIONS`) requests represented a significant blind spot in the egress filtering policy.
+
+Instead of attempting a noisy `POST` exfiltration that might trigger Deep Packet Inspection (DPI), I deliberately engineered a Preflight exfiltration channel. By adding the `X-Force-Preflight: 1` custom header, I forced the browser to send an `OPTIONS` request before the actual data transfer.
 
 ```javascript
 async function exfiltrate(data) {
@@ -170,6 +176,18 @@ async function exfiltrate(data) {
     });
 }
 ```
+
+>*Note: The mechanism was validated exclusively using non-sensitive, synthetic test payloads to confirm feasibility, not to extract production data.*
+
+**This bypass succeeded because:**
+- Administrative Traffic Masking: The stolen data was encoded into the URL query parameters of the `OPTIONS` request.
+- Blind Spot Execution: Most firewalls allow `OPTIONS` requests to pass through to maintain web functionality (CORS) and do not inspect them for data exfiltration.
+- Stealth Exfiltration: The exfiltration server was intentionally configured not to respond with the necessary CORS headers to authorize the subsequent `POST`. This ensured that while the sensitive data was successfully captured during the initial `OPTIONS` handshake, the secondary, high-volume `POST` request was never executed. This kept the exfiltration entirely within the URL parameters of administrative traffic, remaining invisible to WAF body-inspection tools.
+
+### Detection Engineering: Catching Preflight Abuse
+To mitigate this type of "Low-and-Slow" exfiltration, organizations should implement the following detection rules in their SIEM/SOC:
+- Entropy & Length Analysis on `OPTIONS`: Monitor for `OPTIONS` requests containing high-entropy strings or unusually long query parameters (e.g., Base64 blobs), as standard preflights rarely carry heavy data in the URL.
+- Preflight-to-POST Lifecycle Monitoring:: Alert on high volumes of `OPTIONS` requests that are not followed by successful `POST` requests, as this indicates a potential exfiltration attempt via preflight leakage.
 
 ---
 
@@ -190,7 +208,7 @@ Individually, none of these issues would necessarily result in critical impact. 
 
 All findings were disclosed responsibly to the organization’s cybersecurity leadership. I provided a complete proof-of-concept, source code, and detailed remediation guidance, including recommendations to enforce backend HTML sanitization, audit third-party UI components for undocumented HTML parsing behavior, and deploy a restrictive Content Security Policy (CSP) to reduce the impact of client-side injection flaws.
 
-**Vulnerability Status & Coordination:** I identified the root cause within a third-party dependency and developed a functional patch. I initiated a coordinated disclosure process with the maintainer; however, as the upstream project has become unresponsive, I have maintained a [hard fork](https://github.com/ronyut/react-show-more-text) with the security fix to ensure the safety of my own implementations.
+**Vulnerability Status & Coordination:** I identified the root cause within a third-party dependency and developed a functional patch, and initiated a coordinated disclosure process with the maintainer.
 
 **Impact & Scope:** The affected application was an internal, non-customer-facing system. No customer data or customer-facing products were impacted, and no sensitive production data was altered, misused, or exfiltrated during this research.
 

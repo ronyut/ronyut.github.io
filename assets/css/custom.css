@@ -125,3 +125,12 @@ summary:hover {
   opacity: 0.7;
   height: 100dvh;
 }
+
+/* Math Latex height fix */
+mjx-mo > mjx-c, mjx-mi > mjx-c, mjx-mn > mjx-c, mjx-ms > mjx-c, mjx-mtext > mjx-c {
+  clip-path: unset !important;
+}
+
+.highlight > pre {
+  background-color: rgb(17 17 24 / 42%) !important;
+}

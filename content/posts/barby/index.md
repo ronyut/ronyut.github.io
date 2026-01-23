@@ -24,15 +24,15 @@ All findings were responsibly disclosed to the Israeli Cyber Emergency Response 
 
 ---
 
-{{< alert icon="fire" cardColor="#e2131380" iconColor="#f1faee" >}}
+{{< alert icon="shield" cardColor="#e2131380" iconColor="#f1faee" >}}
 **Vulnerability Risk Assessment: Critical\***
 
 - **Affected Platform**: Barby.co.il (ticketing & payment platform)
-- **Impact**: Mass PII exposure, account takeover, financial fraud
+- **Impact**: Mass PII exposure (estimated ~100K clients), account takeover, financial fraud
 - **Authentication Required**: None
 - **Attack Complexity**: Low
-- **Disclosure Status**: Reported to Israeli CERT (July 2024)
-- **Remediation Status**: Platform claimed remediation (September 2024)
+- **Disclosure Status**: Reported to Israeli CERT
+- **Remediation Status**: Platform claimed remediation
 {{< /alert >}}
  
 > \* This severity assessment reflects the combined impact of unauthenticated access control failures that enable cross-user data exposure, account takeover, and financial fraud. Individual issues may score lower in isolation. All core vulnerabilities are remotely exploitable, unauthenticated, and automatable. No victim interaction is required.

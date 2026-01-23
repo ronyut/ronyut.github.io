@@ -18,7 +18,7 @@ The exploit required no user interaction beyond viewing an infected profile and 
 
 *All findings were validated under controlled conditions and disclosed responsibly; no production data was harmed.*
 
-{{< alert icon="shield" cardColor="#e2131391" iconColor="#f1faee" >}}
+{{< alert icon="shield" cardColor="#e2131380" iconColor="#f1faee" >}}
 **Vulnerability Risk Assessment: CRITICAL**
 
 * **Estimated Severity:** 9.3 (CVSS 4.0) / 8.1 (CVSS 3.1)
@@ -187,7 +187,7 @@ async function exfiltrate(data) {
 ### Detection Engineering: Catching Preflight Abuse
 To mitigate this type of "Low-and-Slow" exfiltration, organizations should implement the following detection rules in their SIEM/SOC:
 - Entropy & Length Analysis on `OPTIONS`: Monitor for `OPTIONS` requests containing high-entropy strings or unusually long query parameters (e.g., Base64 blobs), as standard preflights rarely carry heavy data in the URL.
-- Preflight-to-POST Lifecycle Monitoring:: Alert on high volumes of `OPTIONS` requests that are not followed by successful `POST` requests, as this indicates a potential exfiltration attempt via preflight leakage.
+- Preflight-to-POST Lifecycle Monitoring: Alert on high volumes of `OPTIONS` requests that are not followed by successful `POST` requests, as this indicates a potential exfiltration attempt via preflight leakage.
 
 ---
 

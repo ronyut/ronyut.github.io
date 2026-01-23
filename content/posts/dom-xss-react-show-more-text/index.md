@@ -19,7 +19,7 @@ This research documents a **previously unknown vulnerability** class in UI helpe
 
 I have prepared version 1.7.2 to address this issue that includes a security patch.
 
-{{< alert icon="shield" cardColor="#e94d1091" iconColor="#f1faee" >}}
+{{< alert icon="shield" cardColor="#ff48006b" iconColor="#f1faee" >}}
 **Vulnerability Risk Assessment: HIGH**
 
 * **Estimated Severity**: 8.1 (CVSS 3.1) / 9.3 (CVSS 4.0)

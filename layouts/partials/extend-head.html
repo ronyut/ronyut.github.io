@@ -19,3 +19,7 @@
     top.location.replace(self.location.href);
   }
 </script>
+
+{{ if .Param "math" }}
+  {{ partialCached "math.html" . }}
+{{ end }}

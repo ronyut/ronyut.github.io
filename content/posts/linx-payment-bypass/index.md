@@ -13,7 +13,7 @@ In Tel Aviv, **Linx** has become a dominant payment and loyalty platform, integr
 
 I accepted a challenge to audit the system's integrity. My research uncovered a **Critical Business Logic Vulnerability** that allows an attacker to bypass the entire payment flow, effectively "settling" bills without any actual transfer of funds or credit points.
 
-{{< alert icon="shield" cardColor="#e94d1091" iconColor="#f1faee" >}}
+{{< alert icon="shield" cardColor="#e2131380" iconColor="#f1faee" >}}
 **Vulnerability Risk Assessment: HIGH**
 * **Vector:** Business Logic / Social Engineering Hybrid
 * **Impact:** High (Direct financial loss to merchants and platform)
@@ -109,8 +109,6 @@ useEffect(() => {
   }
 }, []);
 ```
-
-![Screen recording of the rogue verification interface demonstrating automatic URL sanitization. The transaction UUID is instantly removed from the address bar to prevent manual inspection.](img/figure3.gif "*Figure 3: Automatic Evidence Sanitization: The transaction UUID is extracted and purged from the URL immediately upon page load, leaving no visible trace of the rogue parameters for the waiter.*")
 
 ### Forensic Considerations: The History Gap
 While `replaceState` cleans the address bar, the initial request persists in the browser's global history logs. To mitigate this, I implemented a strict **Server-Side TTL (Time-To-Live)**. While I used a 10-minute window for this demonstration, the attacker can calibrate this window to ensure the link expires shortly after the anticipated verification, leaving no 'live' evidence for later forensic retrieval. The backend invalidates the UUID after 10 minutes, ensuring that even if the link is recovered from history later, it leads to a 404 "Dead End."

@@ -113,7 +113,7 @@ $$\text{Max Bars} = \frac{22 \times 35 \times 50}{12 \times 4.5 \times 2} \appro
 
 This is a **volume-only upper bound** (it ignores real-world packing efficiency, orientation constraints, and void space), so the true physical maximum is almost certainly lower. I used it purely as a sanity check: my final answer had to be $\le 356$, otherwise it would be physically impossible.
 
-![Physical Measurement Validation](media/kinder-bueno.jpg?w=300 "*Figure 6: Measured dimensions of a real Kinder Bueno bar used to validate physical packing constraints.*")
+![Physical Measurement Validation](media/kinder-bueno.jpg "*Figure 6: Measured dimensions of a real Kinder Bueno bar used to validate physical packing constraints.*")
 
 ---
 

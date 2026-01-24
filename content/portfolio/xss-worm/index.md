@@ -9,6 +9,6 @@ showReadingTime: false
 thumbnail: "featured.png"
 ---
 
-Chained an unpatched React library zero-day with backend validation flaws to create a **self-propagating stored XSS worm** in a corporate Employee Directory. The OOO field accepted raw HTML, triggering XSS via `react-show-more-text` on trusted origin. Result: autonomous worm propagation, contextual credential phishing (confirmed in live testing), and lateral movement to expense/ESPP systems. Perfect storm: untrusted input + supply-chain vuln + trusted domain.
+Chained an unpatched React library zero-day with backend validation flaws to create a **self-propagating stored XSS worm** in a corporate Employee Directory. The OOO field accepted raw HTML, triggering XSS via `react-show-more-text` on trusted origin. Weaponized with **WebSocket C2 for persistent control** and autonomous worm propagation, enabling credential harvesting (confirmed in live testing), lateral movement to expense/ESPP/Travel systems, and **post-employment attack survivability**. Perfect storm: untrusted input + supply-chain vulnerability + trusted domain + persistent infrastructure.
 
 **[Read the full technical analysis →]({{< relref "/posts/xss-worm">}})** | **[See the underlying zero-day →]({{< relref "/posts/react-show-more-text">}})**

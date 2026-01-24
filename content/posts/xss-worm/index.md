@@ -12,7 +12,7 @@ featured_image: "featured.png"
 
 While working at a large global security organization, I identified a critical security vulnerability in an internal React-based application known as the *Employee Directory*. The investigation began with a routine test of an “Out of Office” (OOO) message field and evolved into the discovery of an **unpatched zero-day vulnerability in a widely used open-source React library**, ultimately resulting in a **wormable stored XSS condition**.
 
-By chaining backend trust in frontend validation with a supply-chain flaw in a UI dependency, I demonstrated how an attacker could execute arbitrary JavaScript across a trusted corporate domain. This capability enabled **credential harvesting**, **lateral movement across internal systems**, and **direct interaction with sensitive financial workflows**, including expense management, travel approvals, and ESPP data.
+By chaining backend trust in frontend validation with a supply-chain flaw in a UI dependency, I demonstrated how an attacker could execute arbitrary JavaScript across a trusted corporate domain. This capability enabled **credential harvesting**, **lateral movement across internal systems**, **persistent command-and-control infrastructure**, and **direct interaction with sensitive financial workflows**, including expense management, travel approvals, and ESPP data.
 
 The exploit required no user interaction beyond viewing an infected profile and executed entirely within authenticated browser sessions, bypassing many traditional perimeter defenses.
 
@@ -24,7 +24,7 @@ The exploit required no user interaction beyond viewing an infected profile and 
 * **Estimated Severity:** 9.3 (CVSS 4.0) / 8.1 (CVSS 3.1)
 * **Vulnerability Type:** Stored XSS / Supply Chain Worm  
 * **Execution:** Passive (Zero-Click) trigger on page render
-* **Impact:** Automated session hijacking, horizontal self-propagation across employee profiles, credential theft, lateral movement, financial manipulation  
+* **Impact:** Automated session hijacking, horizontal self-propagation across employee profiles, credential theft, lateral movement, financial manipulation, persistent C2 with post-employment survivability
 * **Exploitability:** High (wormable)  
 * **Root Cause:** Backend trust in frontend input combined with unsafe UI abstraction  
 {{< /alert >}}
@@ -160,6 +160,20 @@ This enabled direct interaction with internal APIs related to expense approvals,
         </em>
     </figcaption>
 {{< /gallery >}}
+
+### Persistent C2 via WebSocket: Post-Employment Attack Surface
+
+Beyond immediate exploitation, the worm's architecture enabled a more sophisticated threat: **persistent command-and-control (C2) infrastructure** via WebSocket connections.
+
+By establishing a WebSocket channel to an attacker-controlled server, the payload could maintain **bidirectional, real-time communication** with infected browser sessions. This transformed static XSS into an interactive remote access tool, allowing the attacker to:
+
+- Execute arbitrary commands within the victim's authenticated session context
+- Dynamically adapt exploitation logic based on real-time reconnaissance
+- Maintain control even after the initial attacker (e.g., a malicious insider) has been terminated from the organization
+
+**The critical implication:** Even if the original attacker's corporate access was revoked, any employee who viewed the infected profile would serve as an unwitting proxy, granting the attacker **sustained access to internal systems through the victim's valid session credentials**.
+
+This demonstrates how stored XSS in trusted environments creates not just an exploitation opportunity, but a **persistent foothold** that survives traditional access revocation mechanisms.
 
 ### CORS Preflight as an Exfiltration Channel
 

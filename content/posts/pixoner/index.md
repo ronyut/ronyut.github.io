@@ -42,7 +42,7 @@ This behavior effectively turned a "needle in a haystack" problem (guessing a 12
 Since UUIDs are hexadecimal (0-9, a-f), each character added to the search string narrows the results. I calculated that testing all combinations up to 5 characters long would be sufficient to map the active database.
 
 The total search space for a 5-character depth is:
-$$16^1 + 16^2 + 16^3 + 16^4 + 16^5 = 1,118,480 \text{ combinations}$$
+$$16^1 + 16^2 + 16^3 + 16^4 + 16^5 =\newline\newline1,118,480\text{ combinations}$$
 
 ### 2. Pruning the Tree
 The most critical realization was that the search space is **sparse**. If a prefix like `b42` returns no results, there is no reason to test `b420`, `b421`, or any further children. 
@@ -118,3 +118,5 @@ Recommendations:
 * Require secondary authentication factor (e.g., an email address) to view sensitive content.
 
 Looking to secure your own data-access layers or conduct a deep-dive security audit? [Let's connect on LinkedIn](https://www.linkedin.com/in/rony-utevsky/).**
+
+<!-- https://my.pixoner.com/en/Download/AllPhotos/J33ZWY -->

@@ -31,7 +31,7 @@ I have prepared version 1.7.2 to address this issue that includes a security pat
 
 ## Impact Demonstration:
 This vulnerability was later chained into a real-world exploitation scenario inside a large enterprise environment, demonstrating credential harvesting, lateral movement, and wormable propagation. A full impact analysis is documented separately:  
-👉 [How a Zero-Day in a React Library Exposed Corporate Data, Employee Credentials, and Financial Assets]({{< relref "react-supply-chain-xss-worm" >}})
+👉 [How a Zero-Day in a React Library Exposed Corporate Data, Employee Credentials, and Financial Assets]({{< relref "xss-worm" >}})
 
 ---
 

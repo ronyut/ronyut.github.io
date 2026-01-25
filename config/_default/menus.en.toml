@@ -12,3 +12,8 @@
   name = "Posts"
   url = "/posts"
   weight = 30
+
+[[main]]
+  name = "CTFs"
+  url = "/ctfs"
+  weight = 40

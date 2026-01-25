@@ -2,7 +2,7 @@ languageCode = "en-us"
 languageName = "English"
 displayName = "EN"
 weight = 1
-title = "Rony Utevsky | Security Research & Software Developent"
+title = "Rony Utevsky | Security Research & Software Development"
 contentDir = "content"
 
 [params]
@@ -29,3 +29,4 @@ contentDir = "content"
 [permalinks]
   portfolio = "/portfolio/:slug/"
   posts = "/posts/:slug/"
+  ctfs  = "/ctfs/:slug/"

@@ -5,7 +5,6 @@ date: 2025-11-05
 description: "How a failure to properly sanitize 'censored' military documents led to the exposure of Top Secret Gaza maneuver protocols to unvetted civilians."
 tags: ["Data Leak", "Redaction Failure", "IDF", "Responsible Disclosure", "Information Security"]
 categories: ["Security Research"]
-showReadingTime: false
 thumbnail: "featured.png"
 ---
 

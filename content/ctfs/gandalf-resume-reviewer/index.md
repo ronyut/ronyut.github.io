@@ -3,6 +3,7 @@ title: "Gandlaf TalentScreen AI: Bypassing AI Resume Screeners"
 slug: "gandalf-resume-reviewer"
 date: 2025-12-17
 tags: ["Prompt Injection", "IIO", "AI Security"]
+headless: true
 ---
 
 ## The Objective

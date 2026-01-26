@@ -13,7 +13,7 @@ In Tel Aviv, **Linx** has become a dominant payment and loyalty platform, integr
 
 I accepted a challenge to audit the system's integrity. My research uncovered a **Critical Business Logic Vulnerability** that allows an attacker to bypass the entire payment flow, effectively "settling" bills without any actual transfer of funds or credit points.
 
-{{< alert icon="shield" cardColor="#e2131380" iconColor="#f1faee" >}}
+{{< alert icon="shield" cardColor="#ff48006b" iconColor="#f1faee" >}}
 **Vulnerability Risk Assessment: HIGH**
 * **Vector:** Business Logic / Social Engineering Hybrid
 * **Impact:** High (Direct financial loss to merchants and platform)

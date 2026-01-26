@@ -9,6 +9,15 @@ showReadingTime: false
 thumbnail: "featured.png"
 ---
 
-Zero-day DOM XSS in `react-show-more-text` (30K+ weekly downloads): unsafe layout measurement logic bypasses React's escaping, achieving zero-click JavaScript execution when content fits in one line. This represents a new vulnerability class — **layout-dependent execution paths** in trusted UI libraries. Widely deployed in employee directories and user profiles, making it a supply-chain wormable primitive.
+**Impact:** Zero-click JS execution | **Reach:** 30k+ Weekly Installs |  
+**Severity:** High | CVSS 8.1 (v3.1)
 
-**[Read the full technical analysis →]({{< relref "/posts/react-show-more-text">}})** | **[See corporate worm exploitation →]({{< relref "/posts/xss-worm">}})**
+Identified a novel vulnerability class: layout-dependent execution paths. By exploiting how this component measures container dimensions, I bypassed React’s built-in XSS protections.
+* **The Flaw:** Unsafe interaction between layout-measurement logic and HTML restoration.
+* **The Trigger:** JavaScript executes automatically when attacker-controlled strings fit entirely within the component’s pixel boundaries.
+* **The Sink:** Bypasses React's escaping model and triggers arbitrary execution through `dangerouslySetInnerHTML`.
+* **The Exploit:** Chained into a **wormable supply-chain primitive** within a large corporate environment.
+* **Status**: Authored the official security patch (v1.7.2).
+
+**[Read Technical Deep-Dive →]({{< relref "/posts/react-show-more-text">}})**  
+**[See Corporate Worm Exploitation →]({{< relref "/posts/xss-worm">}})**

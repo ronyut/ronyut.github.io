@@ -9,6 +9,12 @@ showReadingTime: false
 thumbnail: "featured.png"
 ---
 
-A tourist photo vendor used unique UUIDs to protect paid albums. I discovered the search field accepted **partial UUID matches** and auto-redirected to the first result. By exploiting this "convenience feature" with a recursive brute-force script, I enumerated 74 private albums in under 30 minutes — achieving complete paywall bypass without payment.
+**Impact:** Paywall Bypass | **Type:** Broken Access Control
 
-**[Read the full technical analysis →]({{< relref "/posts/pixoner">}})**
+A tourist photo vendor used unique UUIDs to protect paid albums. I turned a UX "convenience feature" into a mass-disclosure primitive by exploiting the vendor's use of partial UUID matching. This transformed a 128-bit "needle in a haystack" problem into a searchable tree traversal.
+* **The Flaw:** The search field used a `startsWith()` query logic. Entering a partial album key (even a single character) triggered an automatic redirect to the first matching private album.
+* **The Exploit:** Developed a recursive brute-force script in Python that "pruned" the search space: if a prefix returned no results, the script skipped all its children, drastically reducing the required requests.
+* **The Result:** Used concurrent threads to map the sparse search space, successfully extracting relevant unique private albums in a few hours.
+* **The Takeaway:** UX shortcuts should never cross security boundaries; obfuscation via UUID is not a substitute for proper authorization.
+
+**[Read Full Technical Analysis →]({{< relref "/posts/pixoner">}})**

@@ -105,6 +105,7 @@ The script successfully extracted 74 unique album UUIDs from the cruise date. Ea
 This vulnerability allowed for unauthorized mass-disclosure of private data. In a real-world scenario, this would enable:
 * **Privacy Violations**: Scraping thousands of private images.
 * **Revenue Loss**: Bypass of the paywall
+* **Financial Arbitrage:** Attackers could scrape the entire database and resell individual albums at a reduced price on third-party platforms, directly undercutting the vendor's primary revenue stream.
 
 Testing was limited to demonstrating the existence of the vulnerability.
 No images were downloaded or stored beyond confirming unauthorized access paths.

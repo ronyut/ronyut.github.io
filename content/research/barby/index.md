@@ -246,5 +246,5 @@ For platforms handling payments and PII, security must be enforced at the archit
 
 ---
 
-**Interested in security research that bridges architecture and exploitation?  
-[Connect with me on LinkedIn](https://www.linkedin.com/in/rony-utevsky/)**
+Interested in security research that bridges architecture and exploitation?  
+[Connect with me on LinkedIn](https://www.linkedin.com/in/rony-utevsky/)

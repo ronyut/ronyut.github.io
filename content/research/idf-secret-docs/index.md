@@ -1,5 +1,5 @@
 ---
-title: "Exposing 'Top Secret' IDF Documents: The Danger of Improper Digital Redaction"
+title: "Exposing Top Secret IDF Documents: The Danger of Improper Digital Redaction"
 slug: "idf-top-secret-redaction-fail"
 date: 2025-11-05
 description: "How a failure to properly sanitize 'censored' military documents led to the exposure of Top Secret Gaza maneuver protocols to unvetted civilians."

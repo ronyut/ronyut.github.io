@@ -239,6 +239,6 @@ When trusted frontend frameworks, backend assumptions, and third-party dependenc
 
 ---
 
-**Identifying these architectural gaps is where I thrive. If you are looking for a researcher who understands how to build — and how to break — I would be glad to connect.**
+Identifying these architectural gaps is where I thrive. If you are looking for a researcher who understands how to build — and how to break — I would be glad to connect.
 
-**[Let's connect on LinkedIn](https://www.linkedin.com/in/rony-utevsky/)**
+[Let's connect on LinkedIn](https://www.linkedin.com/in/rony-utevsky/)

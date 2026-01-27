@@ -29,4 +29,4 @@ This drive continued during my service in an elite intelligence unit (8200). Whi
 ---
 > "The best builders make the best breakers."
 
-[Connect with me on LinkedIn](https://www.linkedin.com/in/rony-utevsky/)**
+[Connect with me on LinkedIn](https://www.linkedin.com/in/rony-utevsky/)

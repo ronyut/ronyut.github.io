@@ -17,4 +17,4 @@ A tourist photo vendor used unique UUIDs to protect paid albums. I turned a UX "
 * **The Result:** Used concurrent threads to map the sparse search space, successfully extracting relevant unique private albums in a few hours.
 * **The Takeaway:** UX shortcuts should never cross security boundaries; obfuscation via UUID is not a substitute for proper authorization.
 
-**[Read Full Technical Analysis →]({{< relref "/posts/pixoner">}})**
+**[Read Full Technical Analysis →]({{< relref "/fun-hacking/pixoner">}})**

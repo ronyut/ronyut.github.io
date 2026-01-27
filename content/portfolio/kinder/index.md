@@ -11,4 +11,4 @@ thumbnail: "featured.jpg"
 
 Kinder Israel ran a contest: guess the number of chocolate bars in a 3D suitcase. Instead of guessing, I decompiled the Unity WebAssembly bundle, extracted the 3D scene, and used ProBuilder's vertex clustering to count individual objects hidden within a merged mesh. An AutoHotkey script automated submission. Result: 100% accuracy. Key lesson: **client-side abstraction is not a security boundary**.
 
-**[Read the full technical analysis →]({{< relref "/posts/kinder">}})**
+**[Read the full technical analysis →]({{< relref "/fun-hacking/kinder">}})**

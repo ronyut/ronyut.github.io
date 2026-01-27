@@ -19,5 +19,5 @@ Identified a novel vulnerability class: layout-dependent execution paths. By exp
 * **The Exploit:** Chained into a **wormable supply-chain primitive** within a large corporate environment.
 * **Status**: Authored the official security patch (v1.7.2).
 
-**[Read Technical Deep-Dive →]({{< relref "/posts/react-show-more-text">}})**  
-**[See Corporate Worm Exploitation →]({{< relref "/posts/xss-worm">}})**
+**[Read Technical Deep-Dive →]({{< relref "/research/react-show-more-text">}})**  
+**[See Corporate Worm Exploitation →]({{< relref "/research/xss-worm">}})**

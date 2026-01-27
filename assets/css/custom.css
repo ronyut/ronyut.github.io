@@ -43,6 +43,11 @@ a[href^="/tags"] span, a[href^="/categories"] span {
  *************************************************
  */
 
+ /* hide title */
+ .text-base.font-medium.truncate.min-w-0.shrink {
+  display: none;
+ }
+
 article header h1, article h2 {
   color: var(--color-green-bright);
   text-shadow: 2px 2px 4px rgba(0,0,0,0.8);

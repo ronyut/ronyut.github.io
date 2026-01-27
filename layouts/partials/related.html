@@ -1,11 +1,29 @@
 {{ if .Params.showRelatedContent | default (.Site.Params.article.showRelatedContent | default false) }}
-  {{ $scope := where .Site.RegularPages "Section" "posts" -}}
-  {{ $related := $scope.Related . | first .Site.Params.article.relatedContentLimit }}
+  
+  {{/* Automatically set the scope to the current article's section (research or fun-hacking) */}}
+  {{ $currentSection := .Section }}
+  {{ $scope := where .Site.RegularPages "Section" $currentSection -}}
+  
+  {{/* Find related pages within that specific section */}}
+  {{ $related := $scope.Related . | first (.Site.Params.article.relatedContentLimit | default 3) }}
+  
   {{ with $related }}
-    <h2 class="mt-8 text-2xl font-extrabold mb-10">{{ i18n "article.related_articles" | emojify }}</h2>
+    <hr class="my-12 border-dotted border-neutral-300 dark:border-neutral-700" />
+    <h2 class="mt-8 text-2xl font-extrabold mb-10">
+      {{ if eq $currentSection "research" }}
+        🛡️ More in Security Research
+      {{ else if eq $currentSection "fun-hacking" }}
+        🎈 More in Fun Hacking
+      {{ else if eq $currentSection "ctf" }}
+        🚩 More in CTFs
+      {{ else }}
+        {{ i18n "article.related_articles" | emojify }}
+      {{ end }}
+    </h2>
+    
     <section class="w-full grid gap-4 sm:grid-cols-2 md:grid-cols-3">
       {{ range . }}
-        {{ partial "article-link/card-related.html" . }}
+        {{ partial "article-link/card.html" . }}
       {{ end }}
     </section>
   {{ end }}

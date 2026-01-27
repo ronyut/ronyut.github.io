@@ -1,0 +1,86 @@
+{{ $showMoreResearchLinkDest := "/research/" }}
+{{ $showMoreFunHackingLinkDest := "/fun-hacking/" }}
+{{ $showMoreCTFsLinkDest := "/ctf/" }}
+{{ $showMoreDefaultLinkDest := "/posts/" }}
+
+{{ if .Site.Params.homepage.showRecent | default false }}
+
+  {{/* Section 1: Security Research */}}
+  {{ $researchPosts := where .Site.RegularPages "Section" "research" }}
+  
+  {{ if gt (len $researchPosts) 0 }}
+    <section class="mt-12">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-2xl font-extrabold flex items-center">
+          <span class="mr-3 text-3xl">🛡️</span> Security Research
+        </h2>
+      </div>
+      
+      <section class="w-full grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+        {{ range first 5 $researchPosts }}
+          {{ partial "article-link/card.html" . }}
+        {{ end }}
+        <div class="mt-24 flex items-center justify-center">
+          <a href="{{ $showMoreResearchLinkDest | relLangURL }}" class="mt-10">
+            <button class="bg-transparent hover:text-primary-500 prose dark:prose-invert font-semibold py-2 px-4 border border-primary-500 hover:border-transparent rounded transition-colors">
+              Show all research →
+            </button>
+          </a>
+        </div>
+      </section>
+    </section>
+  {{ end }}
+
+  {{/* Section 2: Fun Hacking */}}
+  {{ $funPosts := where .Site.RegularPages "Section" "fun-hacking" }}
+
+  {{ if gt (len $funPosts) 0 }}
+    <section class="mt-20">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-2xl font-extrabold flex items-center">
+          <span class="mr-3 text-3xl">🎈</span> Fun Hacking
+        </h2>
+      </div>
+
+      <section class="w-full grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+        {{ range first 5 $funPosts }}
+          {{ partial "article-link/card.html" . }}
+        {{ end }}
+        <div class="mt-24 flex items-center justify-center">
+          <a href="{{ $showMoreFunHackingLinkDest | relLangURL }}" class="mt-10">
+            <button class="bg-transparent hover:text-primary-500 prose dark:prose-invert font-semibold py-2 px-4 border border-primary-500 hover:border-transparent rounded transition-colors">
+              Show all fun hacks →
+            </button>
+          </a>
+        </div>
+      </section>
+    </section>
+
+   {{/* Section 3: CTFs */}}
+    {{ $ctfPosts := where .Site.RegularPages "Section" "ctf" }}
+  
+    {{ if gt (len $ctfPosts) 0 }}
+      <section class="mt-20">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-2xl font-extrabold flex items-center">
+            <span class="mr-3 text-3xl">🚩</span> CTFs
+          </h2>
+        </div>
+  
+        <section class="w-full grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+          {{ range first 3 $ctfPosts }}
+            {{ partial "article-link/card.html" . }}
+          {{ end }}
+          <div class="mt-24 flex items-center justify-center">
+            <a href="{{ $showMoreCTFsLinkDest | relLangURL }}" class="mt-10">
+              <button class="bg-transparent hover:text-primary-500 prose dark:prose-invert font-semibold py-2 px-4 border border-primary-500 hover:border-transparent rounded transition-colors">
+                Show all CTFs →
+              </button>
+            </a>
+          </div>
+        </section>
+      </section>
+    {{ end }}
+  {{ end }}
+
+{{ end }}

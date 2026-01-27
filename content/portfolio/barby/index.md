@@ -11,4 +11,4 @@ thumbnail: "featured.png"
 
 A major Israeli ticketing platform exposed systemic access control failures: sequential IDs leaked ~100K customer records (PII, partial credit cards), client-side OTP generation enabled instant account takeover, and client-controlled pricing allowed purchasing valid concert tickets for 1 ILS. This wasn't one bug — it was a complete trust boundary collapse across authentication, authorization, and payment flows.
 
-**[Read the full technical analysis →]({{< relref "/posts/barby">}})**
+**[Read the full technical analysis →]({{< relref "/research/barby">}})**

@@ -73,7 +73,7 @@ createMarkup = (str) => {
 This behavior is not accidental misuse but an architectural flaw caused by combining layout measurement, HTML string manipulation, and an explicit HTML injection sink without sanitization.
 
 A full technical breakdown of the vulnerability, including DOM lifecycle analysis and the remediation patch, is documented separately:
-👉 [Exploiting Layout Logic for DOM XSS in react-show-more-text]({{< relref "posts/react-show-more-text" >}})
+👉 [Exploiting Layout Logic for DOM XSS in react-show-more-text]({{< relref "/research/react-show-more-text" >}})
 
 ---
 

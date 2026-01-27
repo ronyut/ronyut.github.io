@@ -19,6 +19,6 @@ The "Agent Breaker" contest required participants to bypass the guardrails of an
 * **Recognition:** Publicly announced during the PO all-hands meeting to the entire organization.
 * **Technical Validation:** Successfully demonstrated how semantic vulnerabilities in LLMs can be exploited to bypass business logic.
 
-[Read the technical breakdown here →](/ctfs/gandalf-resume-reviewer/)
+[Read the technical breakdown here →]({{< relref "gandalf-resume-reviewer" >}})
 
 ![PO meeting announcement](media/po.jpg "*Winner announcement during the PO meeting*")

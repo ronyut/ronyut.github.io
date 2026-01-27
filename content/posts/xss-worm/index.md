@@ -47,7 +47,7 @@ At this point, the remaining question was why the payload executed inside a Reac
 
 ---
 
-## Root Cause: An Latent Supply-Chain Zero-Day in react-show-more-text
+## Root Cause: A Latent Supply-Chain Zero-Day in react-show-more-text
 
 It turned out that the execution sink was not introduced by the organization’s application code. Instead, it originated from a third-party dependency: `react-show-more-text`, a popular React component used to truncate and expand text while preserving clickable links.
 

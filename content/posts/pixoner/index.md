@@ -118,6 +118,6 @@ Recommendations:
 * Enforce Rate Limiting based on IP and session tokens.
 * Require secondary authentication factor (e.g., an email address) to view sensitive content.
 
-Looking to secure your own data-access layers or conduct a deep-dive security audit? [Let's connect on LinkedIn](https://www.linkedin.com/in/rony-utevsky/).**
+Looking to secure your own data-access layers or conduct a deep-dive security audit? [Let's connect on LinkedIn](https://www.linkedin.com/in/rony-utevsky/).
 
 <!-- https://my.pixoner.com/en/Download/AllPhotos/J33ZWY -->

@@ -1,5 +1,4 @@
 ---
-
 title: "Predictable Voucher Identifier Enumeration in Cibus (Victory Integration)"
 slug: "cibus-victory-vouchers-vulnerability"
 date: 2026-01-25
@@ -24,16 +23,30 @@ This research is **strictly limited to Victory-issued vouchers** (prefix `930390
 
 {{< alert icon="shield" cardColor="#ff48006b" iconColor="#f1faee" >}}
 
-**Severity: CRITICAL (Conditional)**
+**Severity: HIGH / CRITICAL ¹**
 
 * **Vulnerability Class:** Predictable Object Identifiers / Business Logic / Supply-Chain Risk
 * **Attack Vector:** Offline Enumeration + Opportunistic Physical Redemption
 * **Impact:** Deterministic theft of financial assets
-* **Risk Threshold:**
-    * **CRITICAL (Deterministic):** If vouchers are valid upon allocation, the exploitability is absolute within the pre-allocated pool. An attacker can use a single purchased voucher as an anchor to perform Local Enumeration, discovering valid assets with near-100% certainty. In this state, the only "failures" are collisions with already-redeemed vouchers, but the attacker's "inventory" of valid targets is mathematically guaranteed.
-    * **HIGH (Probabilistic):** If vouchers require an "Activation Trigger," the success probability is a function of Temporal Density. The attacker must find identifiers that are both issued (sold) and not yet redeemed. Clustered issuance makes this search space small enough that brute-force redemption remains statistically viable for distributed attacks.
 {{< /alert >}}
 
+¹ Conditional Risk Level:
+| Risk Level | Condition                           | Exploitability | Notes                                                                            |
+| ---------- | ----------------------------------- | -------------- | -------------------------------------------------------------------------------- |
+| Critical   | Vouchers valid at allocation        | **Near-100%**  | Single voucher allows local enumeration of pre-allocated pool                    |
+| High       | Vouchers require activation trigger | **Probabilistic**  | Success depends on issued-but-not-redeemed identifiers; temporal density matters |
+
+
+
+---
+
+### Terminology
+
+To avoid ambiguity, when referring to voucher identifiers, the following terms are used consistently:
+- **Generated**: Created by Victory’s voucher system
+- **Provisioned**: Allocated to Cibus but not yet sold
+- **Sold**: Assigned to an end user via Cibus
+- **Redeemed**: Consumed at a Victory point-of-sale
 
 ---
 
@@ -117,6 +130,10 @@ This creates three critical properties:
 3. **Irreversible Exposure**
    Once identifiers are allocated to Cibus, they cannot be made unpredictable retroactively.
 
+The behavior of the system once the enumerable component exceeds its upper bound (999,999) is unknown.
+Possible outcomes include rollover, identifier reuse, or format expansion.
+Each option introduces additional security and operational risks if not explicitly designed and documented.
+
 ---
 
 ## State-Based Threat Model: Why This Becomes Critical
@@ -166,6 +183,13 @@ Vouchers must not be redeemable until explicitly **activated and bound** to a pu
 Unused portions of the identifier space can be reserved as trap vouchers. Redemption attempts against these identifiers provide high-confidence detection of enumeration activity without impacting legitimate users.
 
 >**The "Pool Window" Blind Spot:**  While Victory can easily detect "Out of Range" attempts (e.g., scanning IDs that haven't been provisioned yet), this provides a false sense of security. An adaptive attacker can "anchor" their search by purchasing a single legitimate voucher to identify the current active pool. By restricting their enumeration to this "local neighborhood" (~12000 voucher window as we estimated before), the attacker bypasses threshold-based alerts and remains indistinguishable from legitimate high-volume traffic.
+
+---
+
+## Responsible Disclosure
+
+This issue was responsibly disclosed to Victory on **January 28, 2026**.
+At the time of publication, no confirmation of remediation has been received.
 
 ---
 

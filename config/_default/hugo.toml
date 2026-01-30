@@ -75,7 +75,7 @@ googleAnalytics = "G-MY0D1S8BTD"
 [params.csp]
   "default-src" = ["'self'"]
   "connect-src" = ["'self'", "https://www.google-analytics.com"]
-  "script-src"  = ["'self'", "'sha256-2pa3NIoxYutjJt4200eTmqmSOmWWhLG7jZ5D9H9KnSk='", "'sha256-xhi6ptLg8dTM2XBtV/SYNxtnsQEnSv5wPm9wxHSlpUI='", "'sha256-MTMVBOnL3rJJ90zyllEXyHqGJoWcVyAEwjFtVg7PZJQ='", "'sha256-qa9mxm26I8UKBboHIo0u5m70C9NGVguTeTiEgVRzMcM='", "https://cdn.jsdelivr.net", "'sha256-Gqa2Jm+LPd8QQOGyExoapKipGTy45hGFHXGrstVu5SY='", "'sha256-dq6rq3vq7vV8VG6BZBU7lEDVzqOip7fwpOOJvcg8oUY='", "'sha256-nVDcz6h5umV4OtSJaWkaZbCJiAhtEa8GOvK38HB0I0s='", "'sha256-nnusg2ftNF48ua0dJjbf2VYVUEHDUrf89NAjiAU9n5E='"]
+  "script-src"  = ["'self'", "'sha256-2pa3NIoxYutjJt4200eTmqmSOmWWhLG7jZ5D9H9KnSk='", "'sha256-xhi6ptLg8dTM2XBtV/SYNxtnsQEnSv5wPm9wxHSlpUI='", "'sha256-MTMVBOnL3rJJ90zyllEXyHqGJoWcVyAEwjFtVg7PZJQ='", "'sha256-qa9mxm26I8UKBboHIo0u5m70C9NGVguTeTiEgVRzMcM='", "https://cdn.jsdelivr.net", "'sha256-Gqa2Jm+LPd8QQOGyExoapKipGTy45hGFHXGrstVu5SY='", "'sha256-dq6rq3vq7vV8VG6BZBU7lEDVzqOip7fwpOOJvcg8oUY='", "'sha256-nVDcz6h5umV4OtSJaWkaZbCJiAhtEa8GOvK38HB0I0s='", "'sha256-nnusg2ftNF48ua0dJjbf2VYVUEHDUrf89NAjiAU9n5E='", "'sha256-IWrB3VomF64vPYUXh/uKNQjJR73v8ptI93f9NFrJBNo='"]
   "style-src"   = ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"]
   "font-src"    = ["https://fonts.gstatic.com", "https://cdn.jsdelivr.net"]
   "img-src"     = ["'self'", "data:"]

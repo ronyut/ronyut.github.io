@@ -58,7 +58,7 @@
               {{ end }}
               <img
                 id="author-image"
-                class="mb-2 h-36 w-36 rounded-full"
+                class="mb-3 h-36 w-36 rounded-full"
                 width="144"
                 height="144"
                 alt="{{ $.Site.Params.Author.name | default `Author` }}"
@@ -66,7 +66,7 @@
                 data-zoom-src="{{ $squareImage.RelPermalink }}">
             {{ end }}
           {{ end }}
-          <h1 class="mb-2 text-4xl font-extrabold text-neutral-800 dark:text-neutral-200">
+          <h1 class="mt-2 mb-2 text-4xl font-extrabold text-neutral-800 dark:text-neutral-200">
             {{ .Site.Params.Author.name | default .Site.Title }}
           </h1>
           {{ with .Site.Params.Author.headline }}
@@ -74,13 +74,22 @@
               {{ . | markdownify }}
             </h2>
           {{ end }}
+          <p id="hero_description" class="mt-0 mb-0 text-lg text-neutral-800 dark:text-neutral-300">
+            <span>> Security research grounded in real-world software engineering… <a id="hero_description_read_more">[read more]</a></span>
+          </p>
+          <script>
+            const heroDescriptionReadMore = document.querySelector('#hero_description_read_more');
+            heroDescriptionReadMore.addEventListener('click', (element) => {
+              element.target.parentElement.innerHTML = "> Security research grounded in real-world software engineering, focused on responsible disclosure, exploitability analysis, and improving application security";
+            });
+          </script>
           <div class="mt-3 mb-10 text-2xl">
             {{ with .Site.Params.Author.links }}
               <div class="flex flex-wrap">
                 {{ range $links := . }}
                   {{ range $name, $url := $links }}
                     <a
-                      class="hover:text-primary-400 text-primary-800 dark:text-primary-200 px-1"
+                      class="social-button hover:text-primary-400 text-primary-800 px-1"
                       href="{{ $url }}"
                       target="_blank"
                       aria-label="{{ $name | title }}"

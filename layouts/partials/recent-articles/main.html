@@ -9,7 +9,7 @@
   {{ $researchPosts := where .Site.RegularPages "Section" "research" }}
   
   {{ if gt (len $researchPosts) 0 }}
-    <section class="mt-12">
+    <section class="homepage-posts-section mt-12">
       <div class="flex items-center justify-between mb-6">
         <h2 class="text-2xl font-extrabold flex items-center">
           <span class="mr-3 text-3xl">🛡️</span> Security Research
@@ -22,7 +22,7 @@
         {{ end }}
         <div class="mt-24 flex items-center justify-center">
           <a href="{{ $showMoreResearchLinkDest | relLangURL }}" class="mt-10">
-            <button class="bg-transparent hover:text-primary-500 prose dark:prose-invert font-semibold py-2 px-4 border border-primary-500 hover:border-transparent rounded transition-colors">
+            <button class="show-all-posts-button bg-transparent prose dark:prose-invert py-2 px-4 border rounded transition-colors">
               Show all research →
             </button>
           </a>
@@ -35,7 +35,7 @@
   {{ $funPosts := where .Site.RegularPages "Section" "fun-hacking" }}
 
   {{ if gt (len $funPosts) 0 }}
-    <section class="mt-20">
+    <section class="homepage-posts-section mt-20">
       <div class="flex items-center justify-between mb-6">
         <h2 class="text-2xl font-extrabold flex items-center">
           <span class="mr-3 text-3xl">🎈</span> Fun Hacking
@@ -48,7 +48,7 @@
         {{ end }}
         <div class="mt-24 flex items-center justify-center">
           <a href="{{ $showMoreFunHackingLinkDest | relLangURL }}" class="mt-10">
-            <button class="bg-transparent hover:text-primary-500 prose dark:prose-invert font-semibold py-2 px-4 border border-primary-500 hover:border-transparent rounded transition-colors">
+            <button class="show-all-posts-button bg-transparent prose dark:prose-invert py-2 px-4 border rounded transition-colors">
               Show all fun hacks →
             </button>
           </a>
@@ -60,7 +60,7 @@
     {{ $ctfPosts := where .Site.RegularPages "Section" "ctf" }}
   
     {{ if gt (len $ctfPosts) 0 }}
-      <section class="mt-20">
+      <section class="homepage-posts-section mt-20">
         <div class="flex items-center justify-between mb-6">
           <h2 class="text-2xl font-extrabold flex items-center">
             <span class="mr-3 text-3xl">🚩</span> CTFs
@@ -73,7 +73,7 @@
           {{ end }}
           <div class="mt-24 flex items-center justify-center">
             <a href="{{ $showMoreCTFsLinkDest | relLangURL }}" class="mt-10">
-              <button class="bg-transparent hover:text-primary-500 prose dark:prose-invert font-semibold py-2 px-4 border border-primary-500 hover:border-transparent rounded transition-colors">
+              <button class="show-all-posts-button bg-transparent prose dark:prose-invert py-2 px-4 border rounded transition-colors">
                 Show all CTFs →
               </button>
             </a>

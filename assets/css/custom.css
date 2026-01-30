@@ -1,24 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
-
 :root {
+  --default-font-family: 'Roboto', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-  --color-primary-500: rgba(255, 0, 0, 1);
+  --color-primary-500: rgba(255, 255, 255, 1);
   --color-green-bright: rgb(39, 203, 69);
   --color-green-dark: rgba(46, 130, 74, 0.31);
+  --color-green-faint: rgb(213 255 221);
   --article-text-color: #e0e0e0;
   --color-tag: #ffffffa8;
 }
 
 body {
   background-color: #222222;
-  font-family: 'Inter', sans-serif;
   line-height: 1.7;
   color: var(--article-text-color);
 }
 
 h1 {
-  color: #8dff8b;
+  color: white;
   text-shadow: 4px 3px 1px rgb(0 0 0);
 }
 
@@ -37,6 +35,11 @@ a[href^="/tags"] span, a[href^="/categories"] span {
   border-color: var(--color-tag);
 }
 
+a[href^="/tags"] span:hover, a[href^="/categories"] span:hover {
+  color: white;
+  border-color: var(--color-green-bright);
+}
+
 /*
  *************************************************
  * Home page
@@ -48,8 +51,8 @@ a[href^="/tags"] span, a[href^="/categories"] span {
   display: none;
  }
 
-article header h1, article h2 {
-  color: var(--color-green-bright);
+article h2 {
+  color: var(--color-green-faint);
   text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
 }
 
@@ -64,11 +67,63 @@ article header h1, article h2 {
   box-shadow: #000000 10px 10px 1px;
 }
 
-/* recent posts */
-main#main-content > section.w-full {  
-  border: 3px solid rgba(0, 255, 0, 0.1);
-  padding: 30px;
-  background: #00210340;
+#author-image:hover {
+  border-bottom: 4px solid var(--color-green-bright);
+  border-right: 4px solid var(--color-green-bright);
+}
+
+.social-button {
+  color: var(--color-green-faint);
+}
+
+#hero_description {
+  color: white;
+  background: #2339198f;
+  font-family: monospace;
+  margin: 10px 0 10px 0;
+  border: 1px solid white;
+  padding: 10px;
+  max-width: 880px;
+}
+
+#hero_description_read_more {
+  color: var(--color-green-faint);
+}
+
+#hero_description_read_more:hover {
+  cursor: pointer;
+  color: white;
+  border-bottom: 2px solid var(--color-green-bright);
+}
+
+.homepage-posts-section {
+  border-top: 2px solid var(--color-green-dark);
+  padding-top: 20px;
+}
+
+.homepage-posts-section article:hover {
+  background-color: var(--color-green-dark);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--color-green-faint);
+}
+
+.homepage-posts-section article:hover h2 {
+  color: white;
+}
+
+.homepage-posts-section article header + div {
+  position: relative;
+  z-index: 2;
+}
+
+.show-all-posts-button {
+  border: 1px solid rgba(var(--color-neutral-600),1);
+  color: white;
+}
+
+.show-all-posts-button:hover {
+  background-color: var(--color-green-dark);
+  border-color: var(--color-green-bright);
 }
 
 /*
@@ -81,6 +136,11 @@ main#main-content > section.w-full {
   font-family: var(--font-mono);
 }
 
+.main-menu nav a:hover {
+  color: white;
+  border-bottom: 2px solid var(--color-green-bright);
+}
+
 /* Global search */
 #search-query {
   --tw-ring-color: var(--color-green-bright);
@@ -88,7 +148,35 @@ main#main-content > section.w-full {
 }
 
 #search-button:hover {
-  color: var(--color-green-bright)
+  color: var(--color-green-bright);
+}
+
+
+/*
+ *************************************************
+ * Posts list page
+ *************************************************
+ */
+
+main#main-content > section.w-full {  
+  border: 3px solid rgba(0, 255, 0, 0.1);
+  padding: 30px;
+  background: #00210340;
+}
+
+main#main-content > section.w-full article:hover {
+  background-color: var(--color-green-dark);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--color-green-faint);
+}
+
+main#main-content > section.w-full article:hover h2 {
+  color: white;
+}
+
+main#main-content > section.w-full article header + div {
+  position: relative;
+  z-index: 2;
 }
 
 /*
@@ -119,6 +207,10 @@ summary:hover {
   text-decoration-color: var(--color-green-bright);
 }
 
+#TOCView a:hover {
+  color: var(--color-green-faint);
+}
+
 /* hero bg overlay */
 
 #hero + .single_hero_background > div:nth-of-type(1) { 
@@ -138,4 +230,10 @@ mjx-mo > mjx-c, mjx-mi > mjx-c, mjx-mn > mjx-c, mjx-ms > mjx-c, mjx-mtext > mjx-
 
 .highlight > pre {
   background-color: rgb(17 17 24 / 42%) !important;
+}
+
+/* inside article */
+article h2.relative.group {
+  color: var(--color-green-bright);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
 }

@@ -1,7 +1,7 @@
 ---
 title: "Predictable Voucher Identifier Enumeration in Cibus (Victory Integration)"
 slug: "cibus-victory-vouchers-vulnerability"
-date: 2026-01-25
+date: 2026-01-28
 description: "Security research analyzing a voucher enumeration risk in the Cibus–Victory integration, where predictable voucher identifiers may enable pre-issuance abuse depending on activation semantics."
 tags: ["Security Research", "Enumeration", "Weak Identifiers", "Business Logic", "Supply-Chain Risk", "Luhn Algorithm"]
 categories: ["Security Research"]

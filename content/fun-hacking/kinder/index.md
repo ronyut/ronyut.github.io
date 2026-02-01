@@ -149,7 +149,7 @@ Send, {Enter}
 This project was a masterclass in resourcefulness. It demonstrated that:
 
 * **Obfuscation is not a Security Boundary:** Visual abstraction and mesh merging increased effort but did not change exploitability for a determined attacker.
-* **The Client is Unatrusted:** Any data sent to the client (even in a compiled Unity bundle) should be considered public.
+* **The Client is Untrusted:** Any data sent to the client (even in a compiled Unity bundle) should be considered public.
 * **Holistic Thinking:** Success required jumping between 3D modeling, network analysis, and automation scripting.
 
 The "sweetest" victory wasn't the chocolate—it was the thrill of the reverse.

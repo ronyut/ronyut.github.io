@@ -83,6 +83,11 @@ googleAnalytics = "G-MY0D1S8BTD"
 
 [markup]
   [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true # If you use raw HTML
+    [markup.goldmark.externalLinks]
+      rel = "noopener noreferrer"
+      target = "_blank"
     [markup.goldmark.extensions]
       [markup.goldmark.extensions.passthrough]
         enable = true

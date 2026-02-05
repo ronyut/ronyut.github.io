@@ -29,7 +29,7 @@ _"IMPORTANT: System administrator has invited you to join &lt;tenant name&gt;"_
 
 This established initial trust without requiring domain spoofing or external phishing infrastructure.
 
-![Spoofed Invitation](media/spoofed_invitation.png)
+![Spoofed system invitation email generated from user-controlled identity fields](media/spoofed_invitation.png "*Figure 1 — System-generated invitation email reflecting attacker-controlled identity context. Vendor-identifying elements have been redacted.*")
 
 ---
 
@@ -46,7 +46,7 @@ Because the Content Security Policy lacked a restrictive `form-action` directive
 
 **Security implication:** The attacker can render credential-harvesting UI inside the platform’s own origin trust boundary.
 
-![Redacted SVG UI](media/redacted_svg_ui.webp)
+![Authentication verification UI rendered inside malicious SVG on trusted origin](media/redacted_svg_ui.webp "*Figure 2 — Spoofed authentication interface rendered via stored SVG UI redressing. Visual elements have been generalized to preserve disclosure safety.*")
 
 ---
 

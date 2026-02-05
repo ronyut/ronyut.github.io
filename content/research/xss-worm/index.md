@@ -237,8 +237,4 @@ This research demonstrates how security failures often emerge at abstraction bou
 
 When trusted frontend frameworks, backend assumptions, and third-party dependencies intersect without explicit trust boundaries, a single unsafe design choice can invalidate extensive defensive investments. Identifying and mitigating these architectural fault lines is essential to securing modern web applications.
 
----
-
-Identifying these architectural gaps is where I thrive. If you are looking for a researcher who understands how to build — and how to break — I would be glad to connect.
-
-[Let's connect on LinkedIn](https://www.linkedin.com/in/rony-utevsky/)
+If you’d like to discuss this research or related security topics, you can reach me on [LinkedIn](https://www.linkedin.com/in/rony-utevsky/).

@@ -184,6 +184,4 @@ As a result, the PoC demonstrates the exploit’s mechanics while materially red
 ### Researcher's Perspective
 As a Software Developer, I approach security through the lens of **system logic** and **architectural assumptions**. This vulnerability highlights that "breaking" a system doesn't always require a code-level bug; sometimes, it only requires breaking the assumption of trust between the digital and physical worlds.
 
-Identifying these architectural gaps is where I thrive. If you are looking for a researcher who understands how to build — and how to think like those who build — I'd love to chat.
-
-**Looking for a research position? [Let's connect on LinkedIn](https://www.linkedin.com/in/rony-utevsky/).**
+If you’d like to discuss this research or related security topics, you can reach me on [LinkedIn](https://www.linkedin.com/in/rony-utevsky/).

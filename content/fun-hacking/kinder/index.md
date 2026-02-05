@@ -154,6 +154,4 @@ This project was a masterclass in resourcefulness. It demonstrated that:
 
 The "sweetest" victory wasn't the chocolate—it was the thrill of the reverse.
 
----
-
-Interested in how I break complex systems? [Let's connect on LinkedIn](https://www.linkedin.com/in/rony-utevsky/).
+If you’d like to discuss this research or related security topics, you can reach me on [LinkedIn](https://www.linkedin.com/in/rony-utevsky/).

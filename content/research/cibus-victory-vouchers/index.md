@@ -197,4 +197,4 @@ When redeemability precedes ownership, security does not degrade gradually—it 
 
 Security must be enforced at the **moment of validity**, not merely at the moment of transport.
 
-**Looking for a research position? [Let’s connect on LinkedIn](https://www.linkedin.com/in/rony-utevsky/).**
+If you’d like to discuss this research or related security topics, you can reach me on [LinkedIn](https://www.linkedin.com/in/rony-utevsky/).

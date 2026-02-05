@@ -241,4 +241,4 @@ Security boundaries should never depend on layout, measurement, or visual state.
 
 If your application uses `react-show-more-text`, audit usage carefully and apply sanitization at the final render boundary.
 
-[Let's connect on LinkedIn](https://www.linkedin.com/in/rony-utevsky/)
+If you’d like to discuss this research or related security topics, you can reach me on [LinkedIn](https://www.linkedin.com/in/rony-utevsky/).

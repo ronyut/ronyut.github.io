@@ -123,22 +123,39 @@ Knowing the exact number was only half the battle; the contest rewarded speed. T
 
 ### UI Automation with AutoHotkey (AHK)
 
-I developed an AHK script to automate the submission process. However, a "blazing fast" submission (e.g., 10ms) would be a clear indicator of bot activity. To stay under the radar, I:
+I developed an AHK script to automate the submission process. However, a "blazing fast" submission (e.g., 10ms) or a robotic mouse movement would be a clear indicator of bot activity. To stay under the radar, I:
 * **Simulated Human Latency:** Randomized the delay between keystrokes.
 * **Pixel-Perfect Targeting:** Automated the focus and click events to bypass UI lag.
 
 ```autohotkey
 ; Automated Submission Primitive
-ControlClick, x500 y400, KinderChallengeWindow
-Sleep, % Rand(150, 300) ; Simulate human reaction time
-SendRaw, %ExactCandyCount%
-Send, {Enter}
+SubmitWithHumanTiming(x, y, count) {
+    ; 1. Move in an arc (Bezier) rather than a robotic straight line
+    MouseGetPos(&sX, &sY)
+    cX := (sX + x) / 2 + Random(-100, 100), cY := (sY + y) / 2 + Random(-100, 100)
+
+    Loop 20 {
+        t := A_Index / 20, t := (1 - Cos(t * 3.14)) / 2 ; Easing
+        mX := (1-t)**2 * sX + 2*(1-t)*t * cX + t**2 * x
+        mY := (1-t)**2 * sY + 2*(1-t)*t * cY + t**2 * y
+        DllCall("SetCursorPos", "int", mX, "int", mY)
+        Sleep(Random(1, 5))
+    }
+
+    ; 2. Human 'dwell' and randomized typing
+    Sleep(Random(150, 300))
+    Click()
+    ; Send the keystokes one by one with random
+    Loop Parse, count 
+        Send(A_LoopField), Sleep(Random(30, 90))
+    
+    Send("{Enter}")
+}
 ```
 
 ## Defensive Recommendations
 
 - Do not ship authoritative counts or deterministic layouts to the client
-- Perform server-side validation of contest answers
 - Randomize or generate client visuals independently of ground truth
 - Treat WebGL / Unity assets as fully public
 

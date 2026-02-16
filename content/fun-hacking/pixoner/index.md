@@ -1,6 +1,6 @@
 ---
 title: "Breaking the Paywall: How a 'Lazy' Search Implementation Compromised a Paywall"
-slug: "pixoner-paywall-breach"
+slug: "photo-paywall-breach"
 date: 2025-03-23
 description: "Turning a search 'feature' into a mass-disclosure exploit: How partial UUID matching allowed for the automated scraping of private tourist photo albums."
 tags: ["Broken Access Control", "Business Logic", "Web Security", "Red Teaming", "Brute Force"]
@@ -61,9 +61,6 @@ In this specific instance, the target's lack of aggressive rate-limiting allowed
 The core logic uses a worker pattern to manage the search queue. By using a session object, we maintain persistence and handle the necessary CSRF tokens.
 
 ```python
-import threading
-import requests
-
 # Worker function to process the search queue
 def worker():
     while not queue.empty():
@@ -71,9 +68,7 @@ def worker():
         
         # We use a session to maintain cookies and CSRF tokens
         response = session.post(TARGET_URL, data={
-            "DownloadKey": prefix,
-            "EventCode": "J33ZWY",
-            "__RequestVerificationToken": token
+            "download_key": prefix,
         })
 
         # Detection logic: Check for the 302 Redirect to a full UUID

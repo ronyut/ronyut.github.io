@@ -1,16 +1,16 @@
 ---
-title: "How an Unpatched Zero-Day in a React Library Exposed Corporate Data, Employee Credentials, and Financial Assets"
+title: "How an Unpatched XSS vulnerability in a React Library Exposed Corporate Data, Employee Credentials, and Financial Assets"
 slug: "react-supply-chain-xss-worm"
 date: 2025-12-28
-description: "A React supply-chain zero-day that transformed an innocuous OOO field into a wormable corporate attack primitive."
-tags: ["XSS", "Supply Chain", "Zero-Day", "Credential Harvesting", "Red Teaming"]
+description: "A React supply-chain XSS that transformed an innocuous OOO field into a wormable corporate attack primitive."
+tags: ["XSS", "Supply Chain", "Credential Harvesting", "Red Teaming"]
 categories: ["Security Research"]
 featured_image: "featured.png"
 ---
 
 ## Executive Summary
 
-While working at a large global security organization, I identified a critical security vulnerability in an internal React-based application known as the *Employee Directory*. The investigation began with a routine test of an “Out of Office” (OOO) message field and evolved into the discovery of an **unpatched zero-day vulnerability in a widely used open-source React library**, ultimately resulting in a **wormable stored XSS condition**.
+While working at a large global security organization, I identified a critical security vulnerability in an internal React-based application known as the *Employee Directory*. The investigation began with a routine test of an “Out of Office” (OOO) message field and evolved into the discovery of an **unpatched stored XSS vulnerability in a widely used open-source React library**, ultimately resulting in a **wormable stored XSS condition**.
 
 By chaining backend trust in frontend validation with a supply-chain flaw in a UI dependency, I demonstrated how an attacker could execute arbitrary JavaScript across a trusted corporate domain. This capability enabled **credential harvesting**, **lateral movement across internal systems**, **persistent command-and-control infrastructure**, and **direct interaction with sensitive financial workflows**, including expense management, travel approvals, and ESPP data.
 
@@ -47,7 +47,7 @@ At this point, the remaining question was why the payload executed inside a Reac
 
 ---
 
-## Root Cause: A Latent Supply-Chain Zero-Day in react-show-more-text
+## Root Cause: A Latent Supply-Chain vulnerability in react-show-more-text
 
 It turned out that the execution sink was not introduced by the organization’s application code. Instead, it originated from a third-party dependency: `react-show-more-text`, a popular React component used to truncate and expand text while preserving clickable links.
 

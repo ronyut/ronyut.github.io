@@ -5,7 +5,7 @@ date: 2026-02-05
 description: "Research into how stored SVG UI redressing, identity spoofing, and authorization persistence can be chained into a stealth first-party origin account takeover."
 tags: ["SVG Injection", "Broken Access Control", "Account Takeover", "UI Redressing", "Web Security"]
 categories: ["Security Research"]
-featured_image: "featured.png"
+featured_image: "featured.webp"
 ---
 
 ## Executive Summary

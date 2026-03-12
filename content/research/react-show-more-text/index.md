@@ -6,7 +6,7 @@ date: 2026-01-20
 description: "A technical deep dive into a DOM-based XSS vulnerability caused by layout-driven rendering logic in a popular React UI component."
 tags: ["React", "XSS", "Supply Chain"]
 categories: ["Security Research"]
-featured_image: "featured.png"
+featured_image: "featured.webp"
 ---
 
 ## Executive Summary

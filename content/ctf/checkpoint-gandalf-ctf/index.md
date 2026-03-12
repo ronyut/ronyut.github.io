@@ -3,7 +3,7 @@ title: "1st Place Winner: Check Point AI Security Challenge"
 slug: "checkpoint-gandalf-ctf"
 date: 2025-12-17
 tags: ["Achievement", "AI Security", "Check Point"]
-thumbnail: "featured.png"
+thumbnail: "featured.webp"
 ---
 
 ### The Achievement

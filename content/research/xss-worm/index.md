@@ -5,7 +5,7 @@ date: 2025-12-28
 description: "A React supply-chain XSS that transformed an innocuous OOO field into a wormable corporate attack primitive."
 tags: ["XSS", "Supply Chain", "Credential Harvesting", "Red Teaming"]
 categories: ["Security Research"]
-featured_image: "featured.png"
+featured_image: "featured.webp"
 ---
 
 ## Executive Summary

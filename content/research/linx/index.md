@@ -5,7 +5,7 @@ date: 2026-01-12
 description: "What happens when a fintech platform trusts \"pixels on a screen\"? I audited the Linx payment flow and uncovered a critical logic flaw that allows for total transaction bypass."
 tags: ["Web Vulnerabilities", "Logic Flaws", "Phishing", "Fintech"]
 categories: ["Security Research"]
-featured_image: "featured.png"
+featured_image: "featured.webp"
 ---
 
 ## Executive Summary

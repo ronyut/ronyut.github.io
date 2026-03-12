@@ -5,7 +5,7 @@ date: 2024-09-17
 description: "A security research case study analyzing broken access control and business logic vulnerabilities in an Israeli concert ticketing platform, resulting in mass PII exposure, account takeover, and arbitrary price manipulation."
 tags: ["IDOR", "Broken Access Control", "Business Logic", "PII Exposure", "Web Security"]
 categories: ["Security Research"]
-featured_image: "featured.png"
+featured_image: "featured.webp"
 ---
 
 ## Executive Summary

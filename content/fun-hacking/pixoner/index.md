@@ -5,7 +5,7 @@ date: 2025-03-23
 description: "Turning a search 'feature' into a mass-disclosure exploit: How partial UUID matching allowed for the automated scraping of private tourist photo albums."
 tags: ["Broken Access Control", "Business Logic", "Web Security", "Red Teaming", "Brute Force"]
 categories: ["Security Research"]
-featured_image: "featured.png"
+featured_image: "featured.webp"
 ---
 
 ## Executive Summary

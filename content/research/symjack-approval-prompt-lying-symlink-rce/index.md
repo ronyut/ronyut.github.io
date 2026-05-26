@@ -1,9 +1,9 @@
 ---
-title: "The Approval Prompt is Lying: Symlink RCE in Five AI Coding Agents"
-slug: "approval-prompt-lying-symlink-rce"
+title: "SymJack: the approval prompt is lying to you. A symlink-hijack RCE in five AI coding agents"
+slug: "symjack-approval-prompt-lying-symlink-rce"
 date: 2026-05-26
 description: "A critical security bypass in five leading AI coding agents (Claude Code, Cursor, Antigravity, Copilot, Grok) where deceptive copy/write commands chain with workspace symlinks to achieve RCE."
-tags: ["AI Security", "RCE", "Symlinks", "MCP", "Claude Code", "Cursor", "Antigravity", "Copilot", "Grok"]
+tags: ["AI Security", "SymJack", "RCE", "Symlinks", "MCP", "Claude Code", "Cursor", "Antigravity", "Copilot", "Grok"]
 categories: ["Security Research"]
 featured_image: "featured.png"
 ---
@@ -40,4 +40,4 @@ Similar to [TrustFall]({{< relref "/research/trustfall-coding-agent-rce" >}}), t
 
 For the complete technical breakdown, including proof-of-concept videos and detailed vendor responses, read the original publication:
 
-👉 **[The approval prompt is lying: a critical coding agent security flaw](https://adversa.ai/blog/the-approval-prompt-is-lying-to-you-symlink-rce-in-five-ai-coding-agents-claude-code-cursor-antigravity-copilot-grok-build/)** *(Published on Adversa AI)*
+👉 **[SymJack: the approval prompt is lying to you. A symlink-hijack RCE in five AI coding agents](https://adversa.ai/blog/the-approval-prompt-is-lying-to-you-symlink-rce-in-five-ai-coding-agents-claude-code-cursor-antigravity-copilot-grok-build/)** *(Published on Adversa AI)*

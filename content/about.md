@@ -5,9 +5,9 @@ date: 1970-01-01
 ---
 
 ## $ whoami
-**Software Developer turned Security Researcher.**
+**Security Research Engineer @ Adversa AI | Software Developer turned Security Researcher**
 
-I spent years building web applications before I started breaking them. This transition wasn't just a career shift; it was a deep-dive into the fundamental ways systems fail at the architectural level. I don't just find bugs; I investigate the logic that allowed them to exist.
+Today, I am a Security Research Engineer at Adversa AI, specializing in agentic AI security, LLM vulnerabilities, and advanced application security. Prior to this transition, I spent years building web applications before I started breaking them. This shift wasn't just a career movement; it was a deep-dive into the fundamental ways systems fail at the architectural level. I don't just find bugs; I investigate the logic that allowed them to exist.
 
 ### The Developer's Edge
 Most security research identifies *what* is broken. Because of my engineering background, I focus on the "Developer's Blind Spot"—the space between a feature's intent and its actual implementation.

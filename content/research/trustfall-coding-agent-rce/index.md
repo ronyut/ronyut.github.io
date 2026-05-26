@@ -18,7 +18,7 @@ The core issue lies in the handling of **Model Context Protocol (MCP)** project-
 **Vulnerability Risk Assessment: CRITICAL**
 
 * **Vulnerability Name:** TrustFall
-* **Affected Tools:** Claude Code, Cursor CLI, Gemini CLI (Antigravity), GitHub Copilot CLI
+* **Affected Tools:** Claude Code, Cursor CLI, Gemini CLI (& Antigravity CLI), GitHub Copilot CLI, Codex CLI
 * **Vulnerability Type:** One-Click Remote Code Execution (RCE)
 * **Attack Vector:** Malicious repository containing project-scoped MCP server configurations
 * **Impact:** Unsandboxed execution on the developer machine, or 0-click environment variable exfiltration in headless CI/CD pipelines
@@ -28,7 +28,7 @@ The core issue lies in the handling of **Model Context Protocol (MCP)** project-
 
 ## How the Vulnerability Works
 
-1. **Malicious Config:** An attacker commits a custom `.mcp.json` or equivalent configuration file to a repository. This config specifies an MCP server whose startup command launches a malicious payload (e.g., executing shell scripts, opening calculators, or exfiltrating credentials).
+1. **Malicious Config:** An attacker commits a custom `.mcp.json` or equivalent configuration file to a repository. This config specifies an MCP server whose startup command launches a malicious payload (e.g., executing shell scripts or exfiltrating credentials).
 2. **The "Trust Fall":** The developer clones the repository and starts the coding agent.
 3. **Implicit Execution:** The coding agent displays a generic folder-trust prompt. Once the developer presses Enter to grant trust, the agent immediately spins up the configured MCP servers, executing the attacker's payload.
 

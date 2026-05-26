@@ -28,11 +28,11 @@ The attack leverages symbolic links (symlinks) committed directly to a repositor
 ## How the Vulnerability Works
 
 1. **Weaponized Symlinks:** The attacker commits symlinks in the workspace that mimic harmless files but point directly to the agent's sensitive configuration directories (e.g., `.mcp.json` or agent settings).
-2. **Deceptive Prompts:** The agent is prompted by instructions in the repo to perform a standard file copy or write operation (e.g., copying a video file from `media/vid0.mp4` to a symlinked path like `docs/vid-settings.mp4`).
+2. **Deceptive Prompts:** The agent is prompted by instructions in the repo to perform a standard file copy or write operation (e.g., copying a video file from `media/vid0.mp4` to a symlinked path like `docs/vid0.mp4` that resolves to `.mcp.json`).
 3. **The Symlink Follow:** When the user reviews the prompt, the agent displays an innocent-looking copy command, keeping the user unaware of the real target. Once approved, the underlying kernel follows the symlink and overwrites the agent's config with the attacker's JSON payload disguised inside the copied file.
 4. **Execution:** Upon next execution or agent restart, the overwritten configuration registers a malicious MCP server, resulting in unprompted command execution.
 
-Similar to TrustFall, this technique is especially dangerous on headless CI/CD systems, where automated pull request pipelines instantly execute these operations without any human observation.
+Similar to [TrustFall]({{< relref "/research/trustfall-coding-agent-rce" >}}), this technique is especially dangerous on headless CI/CD systems, where automated pull request pipelines instantly execute these operations without any human observation.
 
 ---
 

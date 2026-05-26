@@ -19,12 +19,12 @@ Most security research identifies *what* is broken. Because of my engineering ba
 ### The Journey: Curiosity as a Constant
 My path into security wasn't academic—it was adversarial. It started in my teens, finding creative ways to identify flaws in local administrative and educational systems. Even then, my focus was on the report; identifying a bypass and ensuring the vulnerability was understood and closed. 
 
-This drive continued during my service in an elite intelligence unit (8200). While my primary role was in translation, I spent my free time exploring the organization's own internal systems. I identified and reported multiple security gaps, turning a personal curiosity into a contribution to the unit’s defensive posture. Today, I’ve traded unofficial exploration for a professional commitment to securing the web.
+This drive continued during my service in an elite intelligence unit (8200). While my primary role was in translation, I spent my free time exploring the organization's own internal systems. I identified and reported multiple security gaps, turning a personal curiosity into a contribution to the unit’s defensive posture. Today, I’ve traded unofficial exploration for a professional commitment to securing the digital frontier—from modern web ecosystems to frontier AI architectures.
 
 ### Research Focus
-* **Web Vulnerabilities:** Deep-dives into DOM-based XSS, IDOR, and Business Logic flaws.
-* **Open Source Security:** Contributing to the ecosystem by hardening widely-used packages and managing the CVE process.
-* **Logic Exploitation:** Breaking down proprietary APIs and web apps to uncover creative attack vectors that automated tools often miss.
+* **Agentic AI & LLM Security:** Exposing critical vulnerabilities in AI coding agents and frontier models, including project-scoped trust bypasses (such as *TrustFall* and *SymJack*), cryptographic payload injections, and reasoning-trace hijacking.
+* **Logic Exploitation & Sandboxing:** Breaking down proprietary APIs, developer tools, and sandboxed systems to uncover architectural flaws that traditional static analysis tools miss.
+* **Web & Supply Chain Security:** Hardening open-source software, identifying DOM-based XSS, and uncovering advanced business logic vulnerabilities in modern applications.
 
 ---
 > "The best builders make the best breakers."

@@ -12,7 +12,7 @@ contentDir = "content"
   dateFormat = "2 January 2006"
   #logo = "img/profile.jpg"
   #secondaryLogo = "img/profile.jpg"
-  description = "Breaking and building systems. Security research on web ecosystems and high-fidelity exploit development."
+  description = "Security research engineer at Adversa AI focusing on agentic AI security, LLM vulnerabilities, and secure code architecture."
 
 [params.author]
   name = "Rony Utevsky"
@@ -20,7 +20,7 @@ contentDir = "content"
   image = "img/profile.jpg"
   imageQuality = 96
   headline = "Security Research Engineer @ Adversa AI"
-  bio = "Specializing in web vulnerabilities and secure code architecture."
+  bio = "Specializing in agentic AI security, LLM vulnerabilities, and secure code architecture."
   links = [
     { email = "mailto:ronyut@gmail.com" },
     { linkedin = "https://www.linkedin.com/in/rony-utevsky/" },
